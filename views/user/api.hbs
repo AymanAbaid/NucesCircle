@@ -1,0 +1,58 @@
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/Connection.css">
+
+    <title> Nuces-Circle</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--set the page width to the size of device -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src="/js/jQuery.js"></script>
+
+</head>
+
+<body>
+ 
+    <div class="mainHeading">
+
+        <p>
+     <form action="/NucesCircle/api/user" method="GET" autocomplete="off">
+   
+      <input type="submit" value="Request API for all Users" style="width:50%; 
+                      height:35px;" ></input>
+     </form>
+ </p>
+
+
+  </div>
+    <div class="mainHeading" style=" height: 220px;" >
+
+   <p>
+     <form action="/NucesCircle/api/user" method="DELETE" autocomplete="off">
+     
+    TO DELETE USER INFORMATION FILL below Field with user id  <br><br>
+    <input type="text" id="DeleteID" name="ID" placeholder='User Record '  ><br>
+   <br> 
+ <input type="submit" value="Request API for all Users" style="width:50%; 
+       height:35px;" onclick="SendID();"  id="Delete"  ></input>
+  </form>
+</p>
+     </div>
+
+
+
+   
+
+   
+    <div class="srch">
+     
+    </div>
+
+<script src="/js/api.js"></script>
+</body>
+
+
+
+

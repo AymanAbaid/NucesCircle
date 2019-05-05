@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Basic Form </title>
+
+	<link rel="stylesheet" href="/css/Postjob.css">
+	<link rel="stylesheet" href="/css/Postjob2.css">
+
+</head>
+
+
+	<header >
+		<h1>Post a Job</h1>
+    </header>
+
+
+    <div class="main-content">
+
+        <!-- You only need this form and the form-basic.css -->
+
+        <form class="form-basic" method="post" action="/NucesCircle/postjob">
+
+            <div class="form-title-row">
+                <h1>        Reach the quality candidates you can’t find anywhere else.
+</h1>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>Job Title </span>
+                    <input type="text" name="Title" required="required">
+                </label>
+            </div>
+
+              <div class="form-row">
+                <label>
+                    <span>Organization</span>
+                    <input type="text" name="Organization" required="required">
+                </label>
+            </div>
+            <div class="form-row">
+                <label>
+                    <span>Last Date for Application</span>
+                <input type="date" name="Date" required="required">
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>Job type</span>
+                    <select name="Type">
+                        <option>Full Time</option>
+                        <option>Part Time</option>
+                        <option>Internship</option>
+                    </select>
+                </label>
+            </div>
+                 <div class="form-row">
+                <label>
+                    <span>Location</span>
+                    <select name="Location">
+                        <option>Lahore</option>
+                        <option>Karachi</option>
+                        <option>Peshawar</option>
+                        <option>Multan</option>
+                        <option>Islamabad</option>
+
+                    </select>
+                </label>
+            </div>
+
+              <div class="form-row">
+                <label>
+                    <span>Salary Range</span>
+                    <select name="Salary">
+                        <option>Rs.10000-25000</option>
+                        <option>Rs.25000-50000</option>
+                        <option>Rs.50000-100000</option>
+                        <option>>Rs.100000   </option>
+                    </select>
+                </label>
+            </div>
+            <div class="form-row">
+                <label>
+                    <span>Discipline</span>
+                    <select name="Discipline">
+                        <option>Computer Science</option>
+                        <option>Humanities</option>
+                        <option>Civil Engineering</option>
+                        <option>Electrical Engineering </option>
+                        <option> Business and Accountancy </option>
+                    </select>
+                </label>
+            </div>
+            <div class="form-row">
+                <label>
+                    <span>Experience</span>
+                    <select name="Experience">
+                        <option>less than 1 year </option>
+                        <option>1-5 years</option>
+                        <option>5-10 years</option>
+                        <option>>10 years </option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>Job Requirements</span>
+                    <textarea name="Requirements" required="required" ></textarea>
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label><span>Location</span></label>
+                <div class="form-radio-buttons">
+
+                    <div>
+                        <label>
+                            <input type="radio" name="radio" checked="checked" >
+                            <span>Send my Profile as a CV which includes  </span>
+                        </label>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="form-row">
+                <button type="submit">Post Job</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

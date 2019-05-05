@@ -1,0 +1,256 @@
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Nuces-Circle</title>
+        <link rel="icon" type="image/png" href="icon.png">
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/css/JobCandidates.css">
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+</head>
+
+<body>
+
+        <div class="header">
+                <!-- action="SearchResultPeople.html"  method="post" -->
+                <form action="SearchResultPeople.html" method="post">
+                        <a href="/NucesCircle" class="logo">Nuces-Circle</a>
+                        <input type='text' placeholder='Search...' id='search-text-input' />
+
+                        <div id='button-holder'>
+
+                                <a style=" padding:2px;   padding-top:10px; COLOR: BLACK"> SEARCH</a>>
+                        </div>
+
+                        <div id="myDropdown" class="dropdown-content2">
+
+
+                                <li> <a href="#about"> <img src="/css/images/portfolio.png"
+                                                        style="width:16px; height:16px ; border-radius: 0%"
+                                                        title="White flower" alt="Flower" align: left> &nbsp; Jobs
+                                        </a> </li>
+                                <li> <a href="#about"> <img src="/css/images/people.png"
+                                                        style="width:16px; height:16px ; border-radius: 0%"
+                                                        title="White flower" alt="Flower" align: left> &nbsp; People
+                                        </a> </li>
+                        </div>
+
+
+
+
+                </form>
+
+
+
+
+
+
+
+
+                <div class="header-right">
+                        <a href="/NucesCircle">
+                                <img src="/css/images/home.png" style="width:35px; height:35px ; border-radius: 0%"
+                                        title="White flower" alt="Flower" /><br>
+                                Home</a>
+
+                        <a href="/NucesCircle/connection" class="active">
+                                <img src="/css/images/meeting.png" style="width:35px; height:35px ; border-radius: 30%"
+                                        title="White flower" alt="Connection"><br>
+                                Network</a>
+                        <a href="/NucesCircle/job">
+                                <img src="/css/images/job.png" style="width:35px; height:35px  ; border-radius: 30%"
+                                        title="White flower" alt="Flower"><br>
+
+                                Job</a>
+                        <a href="/NucesCircle/profile">
+                                <img src="{{CurrUser.imagepath}}"
+                                        style="width:35px; height:35px ; border-radius: 50% ; border:1px solid rgb(207, 205, 205)"
+                                        title="White flower" alt="Flower"><br>
+                                Me</a>
+                        <div class="dropdown">
+                                <a style="  font-size: 15px; padding:4px;
+      font-weight: 75px;" href="/NucesCircle/logout">Log Out</a>
+
+
+                        </div>
+                        <a> &nbsp; </a>
+
+                </div>
+        </div>
+
+        <div style="padding-left:20px">
+                <br>
+
+        </div>
+        <div class="Row1" style=" background-color: white ; ">
+
+                <table id="JobDetail" cellspacing="0" cellpadding="2">
+                        <tr>
+                                <th>Job Detail &nbsp; &nbsp; &nbsp;
+                                </th>
+                        </tr>
+                        <tr>
+                                <td style="color : black "> <b> Job Title: </b>
+                                        {{Job_.Title}} Type
+
+                        </tr>
+                        <tr>
+                                <td style="color : black "> <b> Job Experience: </b>
+                                        {{Job_.Experience}} </td>
+                        </tr>
+                        <tr>
+                                <td style="color : black "> <b> Job Location: </b>
+                                        {{Job_.Location}} </td>
+                        </tr>
+                        <tr>
+                                <td style="color : black "> <b> Job Discipline: </b>
+                                        {{Job_.Discipline}} </td>
+                        </tr>
+                        <tr>
+                                <td style="color : black "> <b> Last Date: </b>
+                                        {{Job_.Date}} </td>
+                        </tr>
+                        <tr>
+                                <td style="color : black "> <b> Salary Range: </b>
+                                        {{Job_.Salary}} </td>
+                        </tr>
+                        <tr>
+                                <td style="color : black "> <b> Job Requirements: </b>
+                                        {{Job_.Requirements}} </td>
+
+                        </tr>
+                        <tr>
+                                <td style="color : black "> <b> Job Type: </b>
+                                        {{Job_.Type}} </td>
+
+                        </tr>
+
+
+                </table>
+
+        </div>
+
+        <hbr><br>
+                <div>
+                        <form action="/NucesCircle/FilterJobApplicant/{{Job_._id}}" method="POST" autocomplete="off">
+
+                                Search Filters
+                                <div class="form-row">
+                                        <label>
+                                                <span>&nbsp; Graduation Year</span>
+                                                <select name="Graduation">
+                                                           <option>2021</option>
+                                                        <option>2020</option>
+                                                        <option>2019</option>
+                                                        <option>2018</option>
+                                                        <option>2017</option>
+                                                        <option>2016</option>
+                                                        <option>2015</option>
+                                                        <option>2014</option>
+                                                        <option>2013</option>
+                                                        <option>2012</option>
+                                                        <option>2011</option>
+                                                        <option>2010</option>
+                                                        <option>2009</option>
+                                                        <option>2008</option>
+                                                        <option>2007</option>
+                                                        <option>2006</option>
+                                                        <option>2005</option>
+                                                        <option>2004</option>
+                                                        <option>2003</option>
+                                                        <option>2002</option>
+                                                        <option>2001</option>
+                                                        <option>2000</option>
+
+                                                </select>
+                                        </label>
+                                        &nbsp; &nbsp;
+                                        <label>
+                                                <span>Discipline</span>
+                                                <select name="Discipline">
+                                                        <option>Computer.Science</option>
+                                                        <option>Humanities</option>
+                                                        <option>Civil.Engineering</option>
+                                                        <option>Electrical.Engineering </option>
+                                                        <option> Business.Accountancy </option>
+                                                </select>
+                                        </label>
+                                                                                <label>
+                    <span>&nbsp;Degree</span>
+                    <select name="Degree">
+                        <option> Bachelors</option>
+                        <option>Masters</option>
+                        <option>Intermediate</option>
+                        <option>Diploma</option>
+                    </select>
+                </label>
+                 
+                                        <label style="padding: 5px; ">
+
+                                                <input type="text" name="Institute" required="required"
+                                                        placeholder="Institute"
+                                                        style="margin-top:-5px; margin-left:-5px; height:30px; " />
+                                        </label>
+
+        
+                                        <label style="padding: 5px; ">
+
+                                                <input type="text" name="Interests" required="required"
+                                                        placeholder="Interests"
+                                                        style="margin-top:-5px; margin-left:-5px; height:30px; " />
+                                        </label>
+
+                                        <input type="submit" value="Search"
+                                                style=" background-color: darkmagenta; margin-top:-3px; margin-left:5px; height:30px; width:70px;" />
+                        </form>
+                </div>
+
+                </div>
+                <br>
+                <div style="background-color:white ; ">
+                        <h5> Applicants List </h5>
+                        <br>
+                </div>
+                <table id="Accomplishments" cellspacing="0" cellpadding="0">
+
+                        {{#each Applicants_  }}
+
+                        <tr>
+                                <td>
+                                        <a href="/NucesCircle/GetProfile/{{this.ApplicantAccEmail}}"
+                                                style=" color: black ; ">
+                                                &nbsp;{{this.ApplicantName}}
+                                        </a> <br>
+
+                                        <b style="color : gray; padding:15px;"> {{this.ApplicantAccEmail}} </b> <br>
+
+                                </td>
+
+                                <td>
+
+                                        <br>
+                                        <span style="color:gray ">
+
+                                                <article style="  padding:5px; ; text-align:left;">
+
+
+                                                        </a>
+                                                </article>
+
+                                        </span>
+                                </td>
+
+
+                                <td style="   color:black;  width: 30%;
+    text-align: centre;"><a href="/NucesCircle/DeleteJobApplicant/{{this._id }}">Select For Interview  </a> &nbsp;
+</td>
+                        </tr>
+                        {{/each }}
+
+
+                </table>
+
+
+
+</body>

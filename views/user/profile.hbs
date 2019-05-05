@@ -1,0 +1,814 @@
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/css/Profile.css">
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+
+        <div class="header">
+                <!-- action="SearchResultPeople.html"  method="post" -->
+                <form action="SearchResultPeople.html" method="post">
+                        <a href="/NucesCircle" class="logo">Nuces-Circle</a>
+                        <!--  <input type='text' placeholder='Search...' id='search-text-input' /> t"
+
+        <div id='button-holder'>
+
+               <a style=" padding:2px;   padding-top:10px; COLOR: BLACK" > SEARCH</a>>
+        </div> -->
+
+
+
+                </form>
+
+
+
+
+
+                <div class="header-right">
+                        <a href="/NucesCircle/Notification" class="notification">
+                                <span class="badge">{{NotificationCount_.count}}</span>
+                                <img src="/css/images/people.png" style="width:35px; height:35px ; border-radius: 0%"
+                                        title="White flower" alt="notifications" /><br>
+                                Notifications</a>
+
+                        <a href="/NucesCircle">
+                                <img src="/css/images/home.png" style="width:35px; height:35px ; border-radius: 0%"
+                                        title="White flower" alt="Flower" /><br>
+                                Home</a>
+
+                        <a href="/NucesCircle/connection">
+                                <img src="/css/images/meeting.png" style="width:35px; height:35px ; border-radius: 30%"
+                                        title="White flower" alt="Connection"><br>
+                                Network</a>
+                        <a href="/NucesCircle/job">
+                                <img src="/css/images/job.png" style="width:35px; height:35px  ; border-radius: 30%"
+                                        title="White flower" alt="Flower"><br>
+
+                                Job</a>
+                        <a href="/NucesCircle/profile" class="active">
+                                <img src="{{CurrUser.imagepath}}"
+                                        style="width:35px; height:35px ; border-radius: 50% ; border:1px solid rgb(207, 205, 205)"
+                                        title="White flower" alt="Flower"><br>
+                                {{CurrUser.FName}}</a>
+                        <div class="dropdown">
+
+                                <a href="/NucesCircle/logout" style=" padding:15px ;padding-left:15px;">Log Out</a>
+
+
+                        </div>
+
+                </div>
+        </div>
+
+        <div id="Row1">
+
+                <div class="cover">
+
+                        <img src="{{CurrUser.imagepath}}" style="  
+                                        width:120px;height:120px; margin-top: 120px ; align:left; background-color: white;   border: 1px solid #ddd;
+                                        " alt="person">
+
+                </div>
+                <div class="cover2">
+                        <div class="Bio-Colum1">
+
+                                <h4> {{CurrUser.FName}}&nbsp;{{CurrUser.LName}} </h4>
+                                <button type="submit" id="Button1" onclick="OpenEditProfile()"> Edit Profile</button>
+                                <br> <br>
+                                <button type="submit" id="Button1" onclick="OpenChangePic()"> Upload Picture</button>
+
+
+                        </div>
+                        <div class="Bio-Colum3">
+                                Age <br>
+                                Phone <br>
+                                Facebook/Twitter <br>
+                                Email <br>
+                                Discipline <br>
+
+
+                        </div>
+                        <div class="Bio-Colum4">
+                                {{CurrUser.Age}} <br>
+                                {{CurrUser.Phone}} <br>
+                                {{CurrUser.Social}} <br>
+                                {{CurrUser.Email}} <br>
+                                {{CurrUser.Discipline}} <br>
+
+                        </div>
+
+
+                </div>
+        </div>
+
+        <div id="Row-Heading4"> <br>SKILLS/INTERESTS</div>
+        <div class=" Row4">
+
+
+                <table id="Skills" cellspacing="10" cellpadding="0">
+
+                        <tr>
+                                <th> </th>
+                                <th> </th>
+                                <th style=" text-align:right; "> <a href="javascript:OpenAddSkill()">ADD NEW SKILL </a>
+                                </th>
+
+                        </tr>
+
+                        {{#each Skill_  }}
+                        <tr>
+                                <td style="padding:5px;    width: 5%; font-size: 30px; ">{{this.Skill }}</td>
+                                <td>
+                                        <div class="container">
+                                                <div class="skills js">{{this.Percentage }} %</div>
+                                        </div>
+
+
+
+
+                                </td>
+                                <td style="  padding-right: 5px;">
+
+                                        <a href="/NucesCircle/DeleteSkill/{{this._id}}"><img
+                                                        src="/css/images/delete.png" width="22" height="22"
+                                                        style="  border-radius: 5px;"></a>
+
+                                </td>
+
+                        </tr>
+
+                        {{/each }}
+
+
+
+                </table>
+
+
+        </div>
+
+
+
+        <div id="Row-Heading4"> <br> Education </div>
+        <div class=" Row4">
+
+
+                <table id="Education">
+                        <tr>
+                                <th>Institution <a href="javascript:OpenAddInstitute()">ADD </a> </th>
+                                <th>Degree</th>
+                                <th>To</th>
+                                <th>From</th>
+                                <th></th>
+                        </tr>
+
+                        {{#each Institute_ }}
+                        <tr>
+                                <td valign="left"><img src="/css/images/institute.png"
+                                                style=" height: 20px; width:20px; border-radius: 0% ; background-color:white" />
+                                        {{this.Institute }}</td>
+                                <td>{{this.Degree }}</td>
+                                <td>{{this.To }}</td>
+                                <td>{{this.From }}</td>
+                                <input type="hidden" id="CurrInstID" name="CurrInstID" value="{{this._id }}">
+                                <td style="     width: 10%;
+    text-align: centre;"><a href="/NucesCircle/UpdateInstitute/{{this._id }}">EDIT </a> &nbsp;
+                                        <a href="/NucesCircle/DeleteInstitute/{{this._id }}">DELETE </a>
+                                </td>
+
+                        </tr>
+                        {{/each }}
+
+
+
+                </table>
+
+
+        </div>
+        <div class=" Row4">
+
+
+                <table id="SPrjects" cellspacing="0" cellpadding="0">
+                        <tr style="color:darkmagenta ">
+
+
+                                <th> Semester Projects&nbsp;&nbsp; <a href="javascript:  OpenAddProject()">ADD New
+                                                Project </a> </th>
+                                <th> </th>
+
+                        </tr>
+                        {{#each Project_  }}
+                        <tr>
+                                <td> <b> Title : </b> {{ this.Project}} <br>
+                                        <b>Discription: </b> &nbsp;{{ this.Discription}}
+                                </td>
+                                <td style="     width: 10%; ">
+                                        <a href="/NucesCircle/DeleteProject/{{this._id }}">DELETE </a>
+                                </td>
+                        </tr>
+                        {{/each }}
+
+                </table>
+
+
+        </div>
+        <div class=" Row4">
+
+
+                <table id="Accomplishments" cellspacing="0" cellpadding="0">
+                        <tr>
+                                <th style="padding:5px;    width: 5%;  ">&nbsp; &nbsp; &nbsp;</th>
+                                <th>Accomplishments &nbsp; &nbsp; &nbsp;
+
+                                </th>
+                        </tr>
+                        <tr>
+                                <td style="padding:5px; padding-left:15px;    width: 5%; font-size: 60px; ">
+                                        {{CourseCount_.count}}</dh>
+                                <td>Courses <a href="javascript:OpenAddCourse()"><img src="/css/images/edit.png"
+                                                        width="22" height="22" style="  border-radius: 5px;"></a> <br>
+                                        <span style="color:gray">
+                                                {{#each Course_  }}
+                                                <article style="   padding:5px; ; text-align:left;">
+                                                        {{this.Discription}}
+
+                                                        <a href="/NucesCircle/DeleteCourse/{{this._id}}"><img
+                                                                        src="/css/images/delete.png" width="15"
+                                                                        height="15" style="  border-radius: 5px;"></a>
+                                                </article>
+                                                {{/each }}
+                                        </span>
+
+
+                                </td>
+
+                        </tr>
+                        <tr>
+                                <td style="padding:5px;    width: 5%;  font-size: 60px; ">{{LanguageCount_.count}}</dh>
+                                <td>Languages
+                                        <a href="javascript:OpenAddLanguage()"><img src="/css/images/edit.png"
+                                                        width="22" height="22" style="  border-radius: 5px;"></a>
+                                        <br>
+                                        <span style="color:gray">
+                                                {{#each Language_  }}
+                                                <article style="   padding:5px; ; text-align:left;">
+                                                        {{this.Discription}}
+                                                        <a href="/NucesCircle/DeleteLanguage/{{this._id}}">
+                                                                <img src="/css/images/delete.png" width="15" height="15"
+                                                                        style="  border-radius: 5px;"> </a>
+
+                                                </article>
+
+                                                {{/each }}
+                                        </span>
+                                </td>
+
+                        </tr>
+                        <tr>
+                                <td style="padding:5px;    width: 5%;  font-size: 60px; ">{{CertificationCount_.count}}
+                                        </dh>
+                                <td>Certifications
+                                        <a href="javascript:OpenAddCertification()"><img src="/css/images/edit.png"
+                                                        width="22" height="22" style="  border-radius: 5px;"></a>
+                                        <br>
+
+                                        {{#each Certification_  }}
+                                        <span style="color:gray">
+                                                {{this.Discription}}
+                                                <a href="/NucesCircle/DeleteCertification/{{this._id}}">x</a>
+                                                &nbsp;&nbsp;&nbsp;
+                                        </span>
+                                        {{/each }}
+                                </td>
+
+                        </tr>
+                        <tr>
+                                <td style="padding:5px;    width: 5%;  font-size: 60px;">{{ExperienceCount_.count}}</dh>
+                                <td>Work Experience
+                                        <a href="javascript:OpenAddExperience()"><img src="/css/images/edit.png"
+                                                        width="22" height="22" style="  border-radius: 5px;"></a>
+                                        <br>
+                                        <span style="color:gray ; text-align: left">
+                                                <br>
+                                                {{#each Experience_  }}
+
+                                                <li style=" text-align: left"> {{this.Discription}} &nbsp;&nbsp;
+                                                        <a href="/NucesCircle/DeleteExperience/{{this._id}}">
+                                                                <img src="/css/images/delete.png" width="15" height="15"
+                                                                        style="  border-radius: 5px;"> </a></li>
+                                                {{/each }}
+
+                                        </span>
+                                </td>
+
+                        </tr>
+
+
+                </table>
+
+
+        </div>
+        <div class=" Row4">
+
+
+                <table id="Accomplishments" cellspacing="0" cellpadding="0">
+                        <tr>
+                                Reviews
+                        </tr>
+
+                        {{#each ReviewList_  }}
+                        <tr>
+
+
+                                <td> {{ this.ReviewDiscription}} <br>
+
+                                        by <a href="/NucesCircle/GetProfile/{{this.ReviewbyEmail}}"
+                                                style="color: black">
+                                                {{ this.ReviewByName}}
+                                        </a>
+
+
+                                </td>
+                                <td>
+                                        <a href="/NucesCircle/DeleteReview/{{this._id}}">
+                                                <img src="/css/images/delete.png" width="15" height="15"
+                                                        style="  border-radius: 5px;"> </a>
+
+                                        </article>
+                                </td>
+
+                        </tr>
+
+                        {{/each }}
+
+                </table>
+
+
+        </div>
+
+        </div>
+
+        <div id="myOverlay" class="overlay">
+                <span class="closebtn" onclick="CloseEditProfile()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+                        <form action="/NucesCircle/profile" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Edit Your Profile
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Type" name="Type" value="General"  >
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" name="FName" value="{{CurrUser.FName}}">
+                                                <input type="hidden" id="LName" name="LName" value="{{CurrUser.LName}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+                                                <input type="hidden" id="imagepath" name="imagepath"
+                                                        value="{{CurrUser.imagepath}}">
+
+
+                                                <label> Age:
+                                                        <input type="text" placeholder=" Age" name="Age" maxlength="2"
+                                                                value="{{CurrUser.Age}}" required="required"
+                                                                style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                </label>
+                                                <br>
+                                                <label> Phone:
+                                                        <input type="text" placeholder=" Phone" name="Phone"
+                                                                value="{{CurrUser.Phone}}" required="required"
+                                                                minlength="11" minlength="11"
+                                                                style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                </label>
+                                                <br>
+                                                <label> Social:
+                                                        <input type="text" placeholder=" Facebook/Twitter Link "
+                                                                name="Social" value="{{CurrUser.Social}}"
+                                                                required="required"
+                                                                style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                </label>
+                                                <br>
+                                                <label>
+                                                        <span>Discipline</span>
+                                                        <select name="Discipline">
+                                                                <option>Computer.Science</option>
+                                                                <option>Humanities</option>
+                                                                <option>Civil.Engineering</option>
+                                                                <option>Electrical.Engineering </option>
+                                                                <option> Business.Accountancy </option>
+                                                        </select>
+                                                </label>
+                                                <br>
+                                                <br> <br><br>
+                                                <button type="submit">Update&nbsp;Profile</button>
+
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+        <div id="ChangeProfilePic" class="overlay">
+                <span class="closebtn" onclick="CloseChangePic()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+                        <form action="/NucesCircle/picture" method="POST" autocomplete="off"
+                                enctype="multipart/form-data">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Upload Profile Picture
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Type" name="Type" value="General">
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" name="FName" value="{{CurrUser.FName}}">
+                                                <input type="hidden" id="LName" name="LName" value="{{CurrUser.LName}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+                                                <input type="hidden" name="Age" value="{{CurrUser.Age}}">
+                                                <input type="hidden" id="Phone" name="Phone" value="{{CurrUser.Phone}}">
+                                                <input type="hidden" id="Social" name="Social"
+                                                        value="{{CurrUser.Social}}">
+
+
+                                                <input type="hidden" id="imagepath" name="imagepath"
+                                                        value="{{CurrUser.imagepath}}">
+
+
+
+                                                <input type="file" name="img" style="margin-left:0px; "
+                                                        placeholder="Upload Picture" />
+
+
+                                                <br> <br><br>
+                                                <button type="submit">Change&nbsp;Picture</button>
+
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+        <div id="myOverlay2" class="overlay">
+                <span class="closebtn" onclick="CloseEditInstitute()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+
+                        <form id="newInstitue" action="/NucesCircle/addInstitute" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Update&nbsp;Institute
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Type" name="Type" value="Institute"
+                                                        oninput="checkInstValididty()">
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+
+                                                <br>
+                                                Institute:
+                                                <input type="text" id="newInst" placeholder=" Institute"
+                                                        name="Institute" required="required"
+                                                        style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+
+                                                <br> <br>
+                                                <label>
+                                                        <span>Degree</span>
+                                                        <select name="Degree">
+                                                                <option> Bachelors</option>
+                                                                <option>Masters</option>
+                                                                <option>Intermediate/Olevel</option>
+                                                                <option>Diploma</option>
+                                                        </select>
+                                                </label>
+                                                <label> To:
+                                                        <input type="month" name="To" required="required"
+                                                                style=" margin:auto">
+
+                                                </label>
+
+                                                <label> Frommmm:
+                                                        <input type="month" name="From" required="required"
+                                                                style=" margin:auto">
+
+                                                </label>
+
+                                                <hr>
+                                                <div class="Error" id="DateError"> *Invalid Dates </div>
+                                                <div class="Error" id="InstError"> *Invalid Institute </div>
+
+                                                <button type="submit">
+                                                        Add&nbsp;Institute </button>
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+
+        <div id="AddIntitute" class="overlay">
+                <span class="closebtn" onclick="CloseAddInstitute()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+
+                        <form id="newInstitue" action="/NucesCircle/addInstitute" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Add&nbsp;New&nbsp;Institute
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Type" name="Type" value="Institute"
+                                                        oninput="checkInstValididty()">
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+
+                                                <br>
+                                                Institute:
+                                                <input type="text" id="newInst" placeholder=" Institute"
+                                                        name="Institute" required="required"
+                                                        style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                <br> <br>
+                                                <label>
+                                                        <span>Degree</span>
+                                                        <select name="Degree">
+                                                                <option> Bachelors</option>
+                                                                <option>Masters</option>
+                                                                <option>Intermediate/Olevel</option>
+                                                                <option>Diploma</option>
+                                                        </select>
+                                                </label>
+                                                <br><br>
+                                                <label> To Date:
+                                                        <!---      <input type="text" id="newTo" placeholder=" To" name="To"
+                                                                required="required"
+                                                                style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   "> 
+                                                <input id="newTo" type="month" name="To" required="required" >
+                                                <input type="month" name="To" required="required" style=" margin:auto" >--->
+                                                        <input type="number" name="To" required="required"
+                                                                style=" margin:auto" min="1980" max="2022" step="1"
+                                                                value="2019" />
+
+                                                </label>
+
+                                                <label> From:
+                                                        <input type="number" name="From" required="required"
+                                                                style=" margin:auto" min="1980" max="2022" step="1"
+                                                                value="2019" />
+
+                                                </label>
+
+                                                <hr>
+                                                <div class="Error" id="DateError"> *Invalid Dates </div>
+                                                <div class="Error" id="InstError"> *Invalid Institute </div>
+
+                                                <button type="submit">
+                                                        <!--  onclick="checkInstituteError()" --> Add&nbsp;Institute
+                                                </button>
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+
+        <div id="AddProject" class="overlay">
+                <span class="closebtn" onclick="CloseAddProject()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+
+                        <form id="newInstitue" action="/NucesCircle/addProject" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Add&nbsp;New&nbsp;Project
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Type" name="Type" value="Institute"
+                                                        oninput="checkInstValididty()">
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+
+                                                <br>
+                                                Project:
+                                                <input type="text" id="newInst" placeholder=" Project" name="Project"
+                                                        required="required"
+                                                        style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                <br> <br>
+                                                Description:
+                                                <input type="text" id="newInst" placeholder=" Discription"
+                                                        name="Discription" required="required"
+                                                        style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                <br> <br>
+
+                                                <hr>
+                                                <div class="Error" id="DateError"> *Invalid Dates </div>
+                                                <div class="Error" id="InstError"> *Invalid Institute </div>
+
+                                                <button type="submit" >
+                                                        Add&nbsp;Project </button>
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+
+        <div id="AddSkill" class="overlay">
+                <span class="closebtn" onclick="CloseAddSkill()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+
+                        <form id="newInstitue" action="/NucesCircle/addSkill" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Add&nbsp;New&nbsp;Skill
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+
+                                                <br>
+                                                Skill:
+                                                <input type="text" id="Skill" placeholder="Skill" name="Skill"
+                                                        required="required"
+                                                        style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                <br> <br>
+                                                Percentage: <input type="range" id="per" name="Percentage" min="0"
+                                                        max="100" oninput="displayPercent()">
+                                                <div id="percentage">
+                                                        50%
+                                                </div>
+
+                                                <!--javascript:adjustSKill()-->
+                                                <button type="submit">
+                                                        Add&nbsp;Skill </button>
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+        <div id="AddCourse" class="overlay">
+                <span class="closebtn" onclick="CloseAddCourse()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+
+                        <form id="newInstitue" action="/NucesCircle/addCourse" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Add&nbsp;New&nbsp;Course
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+
+                                                <br>
+                                                Course:
+                                                <input type="text" id="Discription" placeholder="Course"
+                                                        name="Discription" required="required"
+                                                        style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                <br> <br>
+
+                                                <!--javascript:adjustSKill()-->
+                                                <button type="submit">
+                                                        Add&nbsp;Course </button>
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+        <div id="AddLanguage" class="overlay">
+                <span class="closebtn" onclick="CloseAddLanguage()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+
+                        <form id="newInstitue" action="/NucesCircle/addLanguage" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Add&nbsp;New&nbsp;Language
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+
+                                                <br>
+                                                Language:
+                                                <input type="text" id="Discription" placeholder="Language"
+                                                        name="Discription" required="required"
+                                                        style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                <br> <br>
+
+                                                <!--javascript:adjustSKill()-->
+                                                <button type="submit">
+                                                        Add&nbsp;Language </button>
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+        <div id="AddCertification" class="overlay">
+                <span class="closebtn" onclick="CloseAddCertification()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+
+                        <form id="newInstitue" action="/NucesCircle/addCertificate" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Add&nbsp;New&nbsp;Certification
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+
+                                                <br>
+                                                Certificate:
+                                                <input type="text" id="Discription" placeholder="Certification"
+                                                        name="Discription" required="required"
+                                                        style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                <br> <br>
+
+                                                <!--javascript:adjustSKill()-->
+                                                <button type="submit">
+                                                        Add&nbsp;Certification </button>
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+        <div id="AddExperience" class="overlay">
+                <span class="closebtn" onclick="CloseAddExperience()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+
+                        <form id="newInstitue" action="/NucesCircle/addExperience" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Add&nbsp;New&nbsp;Experience
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+
+                                                <br>
+                                                Experience:
+                                                <input type="text" id="Discription" placeholder="Experience"
+                                                        name="Discription" required="required"
+                                                        style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                <br> <br>
+
+                                                <!--javascript:adjustSKill()-->
+                                                <button type="submit">
+                                                        Add&nbsp;Experience </button>
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+        <script src="/js/profile.js"></script>
+</body>
+
+</html>

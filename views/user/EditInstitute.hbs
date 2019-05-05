@@ -1,0 +1,431 @@
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/css/Profile.css">
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+
+        <div class="header">
+                <!-- action="SearchResultPeople.html"  method="post" -->
+                <form action="SearchResultPeople.html" method="post">
+                        <a href="/NucesCircle" class="logo">Nuces-Circle</a>
+                        <input type='text' placeholder='Search...' name="Find" id='search-text-input'
+                                onclick="myFunction()" />
+                        <div id="myDropdown" class="dropdown-content2">
+
+
+                                <li> <a href="#about"> <img src="/css/images/portfolio.png"
+                                                        style="width:16px; height:16px ; border-radius: 0%"
+                                                        title="White flower" alt="Flower" align: left> &nbsp; Jobs
+                                        </a> </li>
+                                <li> <a href="#about"> <img src="/css/images/people.png"
+                                                        style="width:16px; height:16px ; border-radius: 0%"
+                                                        title="White flower" alt="Flower" align: left> &nbsp; People
+                                        </a> </li>
+                        </div>
+
+                        <div id='button-holder'>
+                                <input type="submit" name="Search" id="srchbtn" value="Search" style="  background-color: Transparent; background-repeat:no-repeat; border: none;cursor:pointer;overflow: hidden;
+                       
+                       outline:none; " onclick="Search()">
+                </form>
+
+
+        </div>
+
+
+        <div class="header-right">
+                <a href="/NucesCircle">
+                        <img src="/css/images/home.png" style="width:35px; height:35px ; border-radius: 0%"
+                                title="White flower" alt="Flower" /><br>
+                        Home</a>
+
+                <a href="Connection.html">
+                        <img src="/css/images/meeting.png" style="width:35px; height:35px ; border-radius: 30%"
+                                title="White flower" alt="Connection"><br>
+                        Network</a>
+                <a href="Jobs.html">
+                        <img src="/css/images/job.png" style="width:35px; height:35px  ; border-radius: 30%"
+                                title="White flower" alt="Flower"><br>
+
+                        Job</a>
+                <a href="/NucesCircle/profile" class="active">
+                        <img src="/css/images/Woman.png"
+                                style="width:35px; height:35px ; border-radius: 50% ; border:1px solid rgb(207, 205, 205)"
+                                title="White flower" alt="Flower"><br>
+                        Me</a>
+                <div class="dropdown">
+                        <!--       <button class="dropbtn"> &nbsp; &nbsp;
+                                <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                                <a href="Signin.html">Log Out</a>
+                                <a href="#">Settings</a>
+                                <a href="#">Edit Profile</a>
+                        </div> -->
+                        <a type="button" href="/NucesCircle/logout">Logout</a>
+                </div>
+                <a> &nbsp; </a>
+
+        </div>
+        </div>
+
+        <div id="Row1">
+
+                <div class="cover">
+
+                        <img src="{{CurrUser.imagepath}}" style="  
+                                        width:120px;height:120px; margin-top: 120px ; align:left; background-color: white;   border: 1px solid #ddd;
+                                        " alt="person">
+
+                </div>
+                <div class="cover2">
+                        <div class="Bio-Colum1">
+                                <br>
+                                <h4> {{CurrUser.FName}}&nbsp;{{CurrUser.LName}} </h4>
+                                <button type="submit" id="Button1" onclick="OpenEditProfile()"> Edit Profile</button>
+
+                        </div>
+                        <div class="Bio-Colum3">
+                                Age <br>
+                                Phone <br>
+                                Facebook/Twitter <br>
+                                Email <br>
+
+                        </div>
+                        <div class="Bio-Colum4">
+                                {{CurrUser.Age}} <br>
+                                {{CurrUser.Phone}} <br>
+                                {{CurrUser.Social}} <br>
+                                {{CurrUser.Email}} <br>
+                        </div>
+
+
+                </div>
+        </div>
+
+        <div id="Row-Heading"> <br>SKILLS </div>
+
+        <div class="Row2">
+
+                <!---  <div class="Row2-column1"> -->
+                <div style=" margin:auto ; width:70%;  ;left:50% ;text-align: center">
+                        <div class="Block-Heading"> PROFESSIONAL&nbsp;SKILLS</div>
+                </div>
+                <p>CSS</p>
+                <div class="container">
+                        <div class="skills css"> &nbsp; 80%</div>
+                </div>
+
+                <p>JavaScript</p>
+                <div class="container">
+                        <div class="skills js">&nbsp; 65%</div>
+                </div>
+
+                <p>PHP</p>
+                <div class="container">
+                        <div class="skills php"> &nbsp; 60%</div>
+                </div>
+
+                <p>HTML</p>
+                <div class="container">
+                        <div class="skills html"> &nbsp; 90%</div>
+                </div>
+
+
+                <!---  </div>-->
+
+        </div>
+
+
+        <div id="Row-Heading4"> <br> Education </div>
+        <div class=" Row4">
+
+
+                <table id="Education">
+                        <tr>
+                                <th>Institution <a href="javascript:OpenAddInstitute()">ADD </a> </th>
+                                <th>To</th>
+                                <th>From</th>
+                                <th></th>
+                        </tr>
+
+                        {{#each Institute_ }}
+                        <tr>
+                                <td valign="left"><img src="/css/images/institute.png"
+                                                style=" height: 20px; width:20px; border-radius: 0% ; background-color:white" />
+                                        {{this.Institute }}</td>
+                                <td>{{this.To }}</td>
+                                <td>{{this.From }}</td>
+         <input type="hidden" id="CurrInstID" name="CurrInstID" value="{{this._id }}">
+                                <td style="     width: 10%;
+    text-align: centre;"><a href="javascript:OpenEditInstitute()">EDIT   </a> &nbsp;
+    <a href="/NucesCircle/DeleteInstitute/{{this._id }}">DELETE </a> 
+                                 </td>
+
+                        </tr>
+                        {{/each }}
+
+
+
+                </table>
+
+
+        </div>
+        <div class=" Row4">
+
+
+                <table id="SPrjects" cellspacing="0" cellpadding="0">
+                        <tr>
+
+                                <th> Semester Projects</th>
+                        </tr>
+                        <tr>
+                                <td>Project 1</td>
+                        </tr>
+                        <tr>
+                                <td>Project 2 </td>
+
+                        </tr>
+                        <tr>
+                                <td>Project 3 </td>
+
+                        </tr>
+
+
+                </table>
+
+
+        </div>
+        <div class=" Row4">
+
+
+                <table id="Accomplishments" cellspacing="0" cellpadding="0">
+                        <tr>
+                                <th style="padding:5px;    width: 5%;  ">&nbsp; &nbsp; &nbsp;</th>
+                                <th>Accomplishments </th>
+                        </tr>
+                        <tr>
+                                <td style="padding:5px;    width: 5%; font-size: 60px; ">12</dh>
+                                <td>Courses <br>
+                                        <span style="color:gray"> Courses1,Courses1, Courses2 ,Courses1,Courses1,
+                                                Courses2,dsdss,dfdsfsd,fsdfsdf,fsf </span>
+                                </td>
+
+                        </tr>
+                        <tr>
+                                <td style="padding:5px;    width: 5%;  font-size: 60px; ">04</dh>
+                                <td>Languages <br>
+                                        <span style="color:gray"> Language1,Language2, Language3 ,Language4</span>
+                                </td>
+
+                        </tr>
+                        <tr>
+                                <td style="padding:5px;    width: 5%;  font-size: 60px; ">13</dh>
+                                <td>Certifications <br>
+                                        <span style="color:gray">
+
+                                                Advertising on YouTube ,What is Data Science Learning .LinkedIn Premium
+                                                Career ,Facebook Ads Crash Course ,
+                                                Youtube Marketing, Video Marketing , SEO YOUTUBE FOR BUSINESS MARKETING
+                                                YOUTUBE SEO : MOTHER OF SEO </span>
+                                </td>
+
+                        </tr>
+                        <tr>
+                                <td style="padding:5px;    width: 5%;  font-size: 60px;">03</dh>
+                                <td>Work Experience <br>
+                                        <span style="color:gray ; text-align: left">
+                                                <br>
+                                                <li style=" text-align: left"> Organization1 </li>
+                                                <li style=" text-align: left"> Organization2 </li>
+                                                <li style=" text-align: left"> Organization3 </li>
+
+                                        </span>
+                                </td>
+
+                        </tr>
+
+
+                </table>
+
+
+        </div>
+
+        </div>
+
+        <div id="myOverlay" class="overlay">
+                <span class="closebtn" onclick="CloseEditProfile()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+                                <form action="/NucesCircle/profile" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Edit Your Profile
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Type" name="Type" value="General">
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" name="FName" value="{{CurrUser.FName}}">
+                                                <input type="hidden" id="LName" name="LName" value="{{CurrUser.LName}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+                                                <input type="hidden" id="imagepath" name="imagepath"
+                                                        value="{{CurrUser.imagepath}}">
+
+
+                                                <label> Age:
+                                                        <input type="text" placeholder=" Age" name="Age"
+                                                                value="{{CurrUser.Age}}" required="required"
+                                                                style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                </label>
+                                                <br>
+                                                <label> Phone:
+                                                        <input type="text" placeholder=" Phone" name="Phone"
+                                                                value="{{CurrUser.Phone}}" required="required"
+                                                                style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                </label>
+                                                <br>
+                                                <label> Social:
+                                                        <input type="text" placeholder=" Facebook/Twitter Link "
+                                                                name="Social" value="{{CurrUser.Social}}"
+                                                                required="required"
+                                                                style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                </label>
+                                                <br> <br> <br>
+
+
+                                                <button type="submit">Update&nbsp;Profile</button>
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+
+        <div id="myOverlay2" class="overlay" style=" display:block;   background-color: rgba(0, 0, 0, 0.911);
+" >
+                <span class="closebtn" onclick="CloseEditInstitute()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+
+                   <form  id="newInstitue" action="/NucesCircle/EditInstitute" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Update&nbsp;Institute
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="id" name="id" value="{{currInstitute._id}}">
+
+                                                <br>
+                                                Institute:
+                                                <input type="text" id="newInst" placeholder=" Institute" value="{{currInstitute.Institute}}"
+                                                        name="Institute" required="required" 
+                                                        style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                <br> <br>
+                                                  <label>
+                    <span>Degree</span>
+                    <select name="Degree">
+                        <option> Bachelors</option>
+                        <option>Masters</option>
+                        <option>Intermediate/Olevel</option>
+                        <option>Diploma</option>
+                    </select>
+                </label>
+                <br> <br>
+                                                <label> To:
+                                                      
+                                               <input type="number"  id="newTo" placeholder=" To" name="To"
+                                                                required="required" value="{{currInstitute.To}}"   style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   "
+
+                                                min="1980" max="2022" step="1" value="2019" />
+                                                </label>
+
+                                                <label> From:
+                                      <input type="number"  id="newFrom" placeholder=" From" name="From"
+                                                                required="required" value="{{currInstitute.From}}"   style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   "
+
+                                                min="1980" max="2022" step="1" value="2019" />
+
+                                        
+                                                </label>
+
+                                                <hr>
+                                                <div class="Error" id="DateError"> *Invalid Dates </div>
+                                                <div class="Error" id="InstError"> *Invalid Institute </div>
+    <!--  onclick="checkInstituteError()" --> 
+                                                <button type="submit">
+                                                   Update &nbsp;Institute </button>
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+
+        <div id="AddIntitute" class="overlay">
+                <span class="closebtn" onclick="CloseAddInstitute()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+
+                   <form  id="newInstitue" action="/NucesCircle/addInstitute" method="POST" autocomplete="off">
+
+                                <div class="Newpost">
+                                        <div class="NewpostHeader">
+                                                Add&nbsp;New&nbsp;Institute
+                                                <br>
+                                        </div>
+                                        <div class="NewpostBody">
+                                                <br>
+                                                <input type="hidden" id="Type" name="Type" value="Institute" oninput="checkInstValididty()">
+                                                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                                                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+
+                                                <br>
+                                                Institute:
+                                                <input type="text" id="newInst" placeholder=" Institute"
+                                                        name="Institute" required="required"
+                                                        style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                <br> <br>
+                                                <label> To:
+                                                        <input type="text" id="newTo" placeholder=" To" name="To"
+                                                                required="required"
+                                                                style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                </label>
+
+                                                <label> From:
+                                                        <input type="text" id="newFrom" placeholder=" From" name="From"
+                                                                required="required"
+                                                                style=" padding:0px; width:79% ;  border: 2px solid rgb(139, 40, 115)   ">
+                                                </label>
+
+                                                <hr>
+                                                <div class="Error" id="DateError"> *Invalid Dates </div>
+                                                <div class="Error" id="InstError"> *Invalid Institute </div>
+
+                                                <button type="submit"
+                                                      <!--  onclick="checkInstituteError()" -->  Add&nbsp;Institute </button>
+                                                <hr>
+
+                                        </div>
+                                </div>
+
+                        </form>
+                </div>
+        </div>
+
+      
+<script src="/js/EditInstitute.js"></script>
+</body>
+
+</html>

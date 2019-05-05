@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet"  type="text/css" href="Signup.css" >
+    <title> Nuces-Circle Sign Up</title>
+<link rel="icon" type="image/png" href="icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<form method="POST">
+       <div id="form">
+            <br>
+
+            <h2  style="background-color: white;    text-align: center ; " >
+              NUCES- Circle    
+          <!---     <p style="width:40px;height:40px; margin-left: 10px; background-color: white; ">  <img src="icon.png"  style="width:40px;height:40px; margin-left: 10px; background-color: white; " alt="Circle">   </p>   --> 
+
+ </h2>
+
+           <div  class="form-rows"> <br> First name:  </div>  <br>
+
+         <input type="text" name="fname"  id="fname" placeholder="First Name" class="inputStyle"><br>
+        <div  class="form-rows"> <br> Last name:  </div>  <br>
+        <input type="text" name="lname" id="lname" placeholder="Last Name" class="inputStyle"><br>
+        <div  class="form-rows"> <br> Email:  </div>  <br>
+        <input type="text" name="lname" id="email" placeholder="Email " class="inputStyle"><br>
+        <div  class="form-rows"> <br> Password (6 or more characters):  </div>  <br>
+        <input type="password" placeholder="Password"id="pwd" class="inputStyle" name="password" required><br>
+       <br>
+       <input type="button"  class="signupButton"  value="Sign Up" onclick="validateForm()" />
+
+       
+       
+       <h4      style="background-color: white;    ; 
+        " > 
+         Already have an Account? 
+            <a href="Signin.html"style="background-color: white; " >Sign in </a> 
+        </h4>
+
+    </div >
+
+
+</form>
+<script>
+function validateForm(){
+var name, password;
+lname = document.getElementById("fname").value;
+fname= document.getElementById("lname").value;
+email = document.getElementById("email").value;
+password= document.getElementById("pwd").value;
+
+if(lname!="" && fname!="" && email!="" && password !=""){
+
+    if (ValidateEmail(email))
+    {
+        window.location.href = "Signin.html";
+
+    }
+
+}
+else if(fname =="" )
+{alert("First Name field cannot be empty")
+}
+else if(lname =="" )
+{alert("Last Name field cannot be empty")
+}
+else if(email =="" )
+{alert(" Email field cannot be empty")
+}
+else if(password =="" )
+{alert("Password field cannot be empty");
+}
+}
+
+function ValidateEmail(mail) 
+{
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+  {
+    return (true)
+  }
+    alert("You have entered an invalid email address!")
+    return (false)
+}
+</script>
+
+
+
+</body>
+
+
+
+</html>

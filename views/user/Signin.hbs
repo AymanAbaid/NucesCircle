@@ -1,0 +1,53 @@
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+  <link rel="stylesheet" type="text/css" href="/css/Signin.css">
+</head>
+
+<body>
+
+<div class="header">
+<img src="/css/images/icon.png" alt="logo" />
+<h1>NUCES-Circle</h1>
+<h4>Welcome Back </h4>
+<p class="par1">
+Don't miss your next opportunity. Sign in to stay updated on your professional world.
+</p>
+
+<br>
+
+<form name="myForm" action="/NucesCircle/signin" method="POST" autocomplete="off">
+
+<div class="signIn_field">
+<input type="text" id="email" name="email" placeholder="Email " required=""><br><br> <span> </span>
+
+<input type="password" placeholder="Password" id="pwd" name="password" required=""><br><br>
+<span> </span>
+<!-- <input type="button" style=" color: white" ; value="Sign in"
+onclick=" validateForm()"
+> -->
+<button type="submit" style="width: 10% ; height: 30px; background: rgb(88, 22, 72); ;color: white" >
+Sign In</button>
+<div  class=" danger"style=" color: red ;  "> &nbsp;   {{title}} </div>
+
+
+<br>
+
+<div >
+<a href="#"> Forgot Password? </a>
+</div>
+<div class="Signup">
+<br>
+<h4 > Don't have an account? <a href="/NucesCircle">
+Signup
+</a> </h4>
+</div>
+</form>
+</div>
+
+
+
+</body>
+

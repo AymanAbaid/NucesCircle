@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Nuces-Circle</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(218, 216, 216);
+
+        }
+
+        .header {
+            overflow: hidden;
+            background-color: rgb(139, 40, 115);
+            padding: 1px 5px 1px 5px;
+            color: white;
+            font-size: 0;
+
+        }
+
+        .header a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 3px;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 15px;
+        }
+
+        .header a.logo {
+            font-size: 25px;
+            font-weight: bold;
+            padding-top: 20px;
+        }
+
+        .header a:hover {
+            background-color: rgba(139, 40, 114, 0.404);
+            opacity: 1;
+            color: black;
+        }
+
+        .header a.active {
+            color: white;
+            border-bottom: 3px solid white;
+
+        }
+
+        .header-right {
+            float: right;
+        }
+
+        img {
+            border-radius: 50%;
+            padding-bottom: 0px;
+        }
+
+        .post {
+            background-color: white;
+            color: black;
+            font-size: 13px;
+            margin: auto;
+            width: 45%;
+            border: 1px solid rgb(182, 181, 181);
+            padding: 20px 10px 5px 20px;
+
+        }
+
+        .post-body {
+            padding: 5px;
+
+        }
+
+        .post-header {
+            padding-left: 20px;
+            padding-bottom: 0px;
+            color: gray;
+            background-color: white;
+            text-align: left;
+            line-height: 1.6;
+
+
+
+        }
+
+        .post-footer {
+            color: gray;
+
+        }
+
+        @media screen and (max-width: 500px) {
+
+            /* For tablets: */
+            .post {
+
+                float: left;
+
+
+            }
+
+
+        }
+        input[type=text] {
+            text-align: left;
+            padding: 5px 5px 10px 5px;
+            float: right;
+            margin-top: 10px;
+            border-radius: 1px;
+            font-size: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            transition: width 0.4s ease-in-out;
+        }
+
+        input[type=text]:focus {
+
+            border: 1px solid rgb(65, 63, 64);
+            ;
+        }
+
+        #search-text-input {
+            float: left;
+            height: 35px;
+            outline: 0;
+            width: 183px;
+        }
+
+        #button-holder {
+            background-color: #f1f1f1;
+            border-radius: 1px;
+            cursor: pointer;
+            float: left;
+            height: 35px;
+            width: 70px;
+            margin: 10px;
+            margin-left: 0px;
+            padding: 5px 0px 1px 0px;
+            color: black
+        }
+
+        #button-holder a:hover {
+
+            background-color: transparent;
+        }
+
+        #button-holder img {
+            width: 20px;
+        }
+
+        .dropdown-content2 {
+            margin-top: 43px;
+            margin-left: 203px;
+
+            display: none;
+            position: absolute;
+            background-color: #f6f6f6;
+            min-width: 200px;
+            overflow: auto;
+            border: 1px solid #ddd;
+            z-index: 1;
+
+        }
+
+        .dropdown-content2 a {
+            position: relative;
+            display: inline-block;
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: bold;
+            display: block;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 30px;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+            padding-left: 35px;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 17px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 110px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .topnav a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #555;
+            color: white;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+
+<body onload="checkSearch()" >
+
+    <div class="header">
+        <a href="Newsfeed.html" class="logo">Nuces-Circle</a>
+        <input type='text' placeholder='Search...' id='search-text-input' name="Find" onclick="myFunction()" />
+        <div id="myDropdown" class="dropdown-content2">
+
+
+            <li> <a href="javascript:SearchJob();"> <img src="portfolio.png"
+                        style="width:16px; height:16px ; border-radius: 0%" title="White flower" alt="Flower" align:
+                        left> &nbsp; Jobs
+                </a> </li>
+            <li> <a href="javascript:SearchPeople();"> <img src="people.png"
+                        style="width:16px; height:16px ; border-radius: 0%" title="White flower" alt="Flower" align:
+                        left> &nbsp; People
+                </a> </li>
+        </div>
+
+        <div id='button-holder'>
+
+            <a href="javascript:onload=prepareinput();" style="    margin-left:-20px;   color:black">Search</a>
+
+
+        </div>
+        <div class="header-right">
+            <a href="Newsfeed.html" class="active">
+                <img src="home.png" style="width:35px; height:35px ; border-radius: 0%" title="White flower"
+                    alt="Flower" /><br>
+                Home</a>
+
+            <a href="Connection.html">
+                <img src="meeting.png" style="width:35px; height:35px ; border-radius: 30%" title="White flower"
+                    alt="Connection"><br>
+                Network</a>
+            <a href="Jobs.html">
+                <img src="job.png" style="width:35px; height:35px  ; border-radius: 30%" title="White flower"
+                    alt="Flower"><br>
+
+                Job</a>
+            <a href="Profile.html">
+                <img src="Woman.png"
+                    style="width:35px; height:35px ; border-radius: 50% ; border:1px solid rgb(207, 205, 205)"
+                    title="White flower" alt="Flower"><br>
+                Me</a>
+            <div class="dropdown">
+                <button class="dropbtn"> &nbsp; &nbsp;
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="Signin.html">Log Out</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Edit Profile</a>
+                </div>
+            </div>
+            <a> &nbsp; </a>
+
+        </div>
+    </div>
+
+    <div style="padding-left:20px">
+        <h1>Search Results </h1>
+        * This Search widget takes first char of input and search on inout due to Lack of desired combination of words
+        in array;
+    </div>
+    <div id="output" style="padding-left:20px ; height: 200px ">
+
+    </div>
+
+
+
+    <script type="text/javascript">
+        Searchtype = "I";
+        function checkSearch()
+        { 
+            var user=getCookie("search");
+            if (user != "") {
+                document.getElementById("search-text-input").value=user;
+                Search(user);
+             } 
+                             else
+                var wrap = document.getElementById('output');
+                wrap.innerHTML = "<br>" + "<h1 style=' padding: -50 px; color: Green '> Error:  Result not Found <h1>";
+
+        
+    }
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+        function prepareinput() {
+            //   Document.write("dsdsdsd");
+
+            var input = document.getElementById("search-text-input").value;
+
+
+            if (input != "") {
+                        //var text = document.createTextNode(" What "+ user );
+                        // out.appendChild(text);
+                        if (isNaN(input)) {
+                            Search(input);
+                        }
+                        else {
+                            var wrap = document.getElementById('output');
+                            wrap.innerHTML = "<br>"+"<br>" +"<br>"  + "Result not Found";
+                        }
+
+                    }
+                
+            else
+                var wrap = document.getElementById('output');
+                wrap.innerHTML = "<br>" + "Result not Found";
+
+        }
+        function SearchPeople() {
+            Searchtype = "p";
+
+        }
+        function SearchJob() {
+            Searchtype = "j";
+        }
+
+    
+
+
+        function myFunction() {
+
+            if (document.getElementById("myDropdown").style.display == "block") {
+                document.getElementById("myDropdown").style.display = "none";
+            }
+            else
+                document.getElementById("myDropdown").style.display = "block";
+
+        }
+        srchFlag=0;
+
+        function Search(str) {
+            var myNode = document.getElementById("output");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+            var data = ["a Record1", "a Record2", "a Record3", "a Record4", "b Record1", "b Record2", "c Record1", "c Record2", "d Record1", "d Record2", "e Record1", "e Record2", "f Record1", "f Record2",
+                "gRecord1", "hRecord2", "iRecord1", "iRecord2", "jRecord1", "jRecord2", "j Record1", "j Record2", "k Record1", "k Record2", "l record1", "l Record2",
+                "m Record1", "m Record2", "n Record1", "n Record2", "o Record1", "o Record2", "p Record1", "p Record2", "q Record1", "q Record2", "r Record1", "r Record2",
+                "s Record1", "s Record2", "t Record1", "t Record2", "u Record1", "u Record2", "v Record1", "v Record2", "w Record1", "w Record2", "x Record1", "x Record2",
+                "y Record1", "y Record2", "z Record1", "z Record2", "z  Record 3", "c Record 5", "d Record 13"];
+
+           str=str.toLowerCase();
+                for (i = 0; i <= data.length; i++) {
+
+                if (data[i][0].startsWith(str.charAt(0))) {
+
+                    var wrap = document.getElementById('output');
+
+                    var divElement = document.createElement("Div");
+                    divElement.id = "divID" + i;
+                    divElement.style.backgroundColor = "white";
+                    divElement.style.color = "black";
+                    divElement.style.height = "55px";
+                    divElement.style.width = "80%";
+                    divElement.style.textAlign = "left";
+                    divElement.style.border = "2px solid gray";
+                    divElement.style.margin = "auto";
+                    divElement.style.padding = "10px";
+                    divElement.style.marginBottom = "10px";
+                    divElement.style.position = "relative";
+
+                    // x = document.createElement("B");
+                    var text1 = document.createTextNode("Job/People " + " :" + data[i]);
+                    //x.appendChild(text1);
+                    divElement.appendChild(text1);
+
+                    var btn = document.createElement("BUTTON");
+                    var btntext = document.createTextNode("View Profile/Job");
+                    btn.style.color = "white";
+                    btn.style.backgroundColor = "rgb(139, 40, 114)";
+                    btn.style.fontSize = "12px";
+                    btn.style.textAlign = "center";
+                    btn.style.width = "20%";
+                    btn.style.padding = "10px";
+                    btn.style.position = "absolute";
+                    btn.style.right = "10px";
+                    btn.setAttribute("onclick", "viewProfile()");
+                    // var break1 = document.createElement("BR");
+                    //btn.insertBefore(break1, text2);
+                    // btn.style.
+
+                    btn.appendChild(btntext);
+
+                    divElement.appendChild(btn);
+
+
+
+                    wrap.appendChild(divElement);
+                    srchFlag=1;
+                }
+
+
+            }
+
+            if(srchFlag == 0)
+            {var wrap = document.getElementById('output');
+           // wrap.innerHTML= "<br>"+"Result not Found";
+            alert("Result not Found")
+
+            }
+        }
+
+
+        function viewProfile()
+        {
+
+
+            window.location.href = "Profile.html";
+
+        }
+     
+    </script>
+
+</body>
+
+</html>

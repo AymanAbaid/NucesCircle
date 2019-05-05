@@ -1,0 +1,118 @@
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Nuces-Circle</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/SearchResultPeople.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+   
+</head>
+
+<body  >
+
+     <div class="header">
+                <!-- action="SearchResultPeople.html"  method="post" -->
+        <form action="SearchResultPeople.html" method="post">
+                        <a href="/NucesCircle" class="logo">Nuces-Circle</a>
+       <!--  <input type='text' placeholder='Search...' id='search-text-input' /> t"
+
+        <div id='button-holder'>
+
+               <a style=" padding:2px;   padding-top:10px; COLOR: BLACK" > SEARCH</a>>
+        </div> -->
+
+                 
+
+         </form>
+
+
+       
+
+
+        <div class="header-right">
+                      <a href="/NucesCircle/Notification" class="notification" >
+                        <img src="/css/images/people.png" style="width:35px; height:35px ; border-radius: 0%"
+                                title="White flower" alt="notifications" /><br>
+                        Notifications</a>
+
+                <a href="/NucesCircle">
+                        <img src="/css/images/home.png" style="width:35px; height:35px ; border-radius: 0%"
+                                title="White flower" alt="Flower" /><br>
+                        Home</a>
+
+                <a href="/NucesCircle/connection" >
+                        <img src="/css/images/meeting.png" style="width:35px; height:35px ; border-radius: 30%"
+                                title="White flower" alt="Connection"><br>
+                        Network</a>
+                <a href="/NucesCircle/job" class="active">
+                        <img src="/css/images/job.png" style="width:35px; height:35px  ; border-radius: 30%"
+                                title="White flower" alt="Flower"><br>
+
+                        Job</a>
+                <a href="/NucesCircle/profile"  >
+                        <img src="{{CurrUser.imagepath}}"
+                                style="width:35px; height:35px ; border-radius: 50% ; border:1px solid rgb(207, 205, 205)"
+                                title="White flower" alt="Flower"><br>
+                        {{CurrUser.FName}}</a>
+                 <div class="dropdown">
+                         
+                <a href="/NucesCircle/logout" style=" padding:15px ;padding-left:15px;">Log Out</a>
+
+                   
+            </div>
+
+        </div>
+        </div>
+    <div style="padding-left:20px">
+        <h1>Search Results </h1>
+       
+    </div>
+    <div id="ooutput" style=" align:left">
+
+<ul class="nav">
+    {{#each People }}
+    <li>
+<div class="card">
+    <div class="center">
+  <img src="{{this.imagepath}}" alt="{{this.FName}}" style=" width:90%  ;height:5%"></div>
+ <a href="/NucesCircle/GetProfile/{{this.Email}}"> <h1>{{this.FName}} {{this.LName}}</h1> </a>
+  <p class="title"> {{this.Social}}</p>
+  <p>{{this.Phone}}</p>
+<form   action="/NucesCircle/Connect" method="POST" autocomplete="off">
+    <input type="hidden" id="FriendEmail" name="FriendEmail" value="{{this.Email}}" >
+  <p><button>Connect</button></p>
+</form>
+</div>
+</li>
+  
+  {{/each }}
+   {{#each Friends_ }}
+    <li>
+<div class="cardFriend" >
+    <div class="center">
+  <img src="{{this.imagepath}}" alt="{{this.FName}}" style=" width:90%  ;height:5%"></div>
+ <a href="/NucesCircle/GetProfile/{{this.Email}}"> <h1>{{this.FName}} {{this.LName}}</h1> </a>
+  <p class="title"> {{this.Social}}</p>
+  <p>{{this.Phone}}</p>
+<br>
+
+
+</div>
+</li>
+  
+  {{/each }}
+
+
+
+
+</ul>
+
+
+    </div>
+
+
+</body>
+
+

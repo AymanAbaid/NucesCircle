@@ -1,0 +1,354 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/Profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+
+     <div class="header">
+                <!-- action="SearchResultPeople.html"  method="post" -->
+        <form action="SearchResultPeople.html" method="post">
+                        <a href="/NucesCircle" class="logo">Nuces-Circle</a>
+     
+        </form>
+
+
+       
+
+
+        <div class="header-right">
+                      <a href="/NucesCircle/Notification" class="notification" >
+                        <span class="badge">{{NotificationCount_.count}}</span>
+                        <img src="/css/images/people.png" style="width:35px; height:35px ; border-radius: 0%"
+                                title="White flower" alt="notifications" /><br>
+                        Notifications</a>
+
+                <a href="/NucesCircle">
+                        <img src="/css/images/home.png" style="width:35px; height:35px ; border-radius: 0%"
+                                title="White flower" alt="Flower" /><br>
+                        Home</a>
+
+                <a href="/NucesCircle/connection" >
+                        <img src="/css/images/meeting.png" style="width:35px; height:35px ; border-radius: 30%"
+                                title="White flower" alt="Connection"><br>
+                        Network</a>
+                <a href="/NucesCircle/job">
+                        <img src="/css/images/job.png" style="width:35px; height:35px  ; border-radius: 30%"
+                                title="White flower" alt="Flower"><br>
+
+                        Job</a>
+                <a href="/NucesCircle/profile" class="active" >
+                        <img src="{{CurrUser.imagepath}}"
+                                style="width:35px; height:35px ; border-radius: 50% ; border:1px solid rgb(207, 205, 205)"
+                                title="White flower" alt="Flower"><br>
+                        {{CurrUser.FName}}</a>
+                 <div class="dropdown">
+                         
+                <a href="/NucesCircle/logout" style=" padding:15px ;padding-left:15px;">Log Out</a>
+
+                   
+            </div>
+
+        </div>
+    
+    </div>
+
+
+    <div id="Row1">
+
+        <div class="cover">
+
+            <img src="{{other.imagepath}}" style="  
+                                        width:120px;height:120px; margin-top: 120px ; align:left; background-color: white;   border: 1px solid #ddd;
+                                        " alt="person">
+          
+
+        </div>
+        <div class="cover2">
+            <div class="Bio-Colum1">
+                <br>
+          
+                <h4> {{other.FName}}&nbsp;{{other.LName}} </h4>
+                        
+             <button type="submit" class="GiveReview" onclick="OpenGiveReview()"
+                 style="  background-color:rgb(139, 40, 114);
+                 width:100%; height:80%;  align:left; color:white ; border: 1px solid #ddd;
+                "
+             > Give Review</button>
+            </div>
+            <div class="Bio-Colum3">
+                Age <br>
+                Phone <br>
+                Facebook/Twitter <br>
+                Email <br>
+                Discipline<br>
+            </div>
+            <div class="Bio-Colum4">
+                {{other.Age}} <br>
+                {{other.Phone}} <br>
+                {{other.Social}} <br>
+                {{other.Email}} <br>
+                {{other.Discipline}} <br>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div id="Row-Heading4"> <br>SKILLS </div>
+    <div class=" Row4">
+
+
+        <table id="Skills" cellspacing="10" cellpadding="0">
+
+            <tr>
+                <th> </th>
+                <th> </th>
+
+            </tr>
+
+           
+                 {{#each Skill_  }}
+                <tr >
+                   <td style="padding:10px  0px 10px 40px  ;   width: 50%; font-size: 30px; align-text:center ">{{this.Skill }} 
+                 ( {{this.Percentage }}  )
+                  
+                   <td>
+                
+            </tr>
+
+           {{/each }}
+
+        
+
+
+
+        </table>
+
+
+    </div>
+
+
+
+    <div id="Row-Heading4"> <br> Education </div>
+    <div class=" Row4">
+
+
+        <table id="Education">
+            <tr>
+                <th>Institution  </th>
+                <th>To</th>
+                <th>From</th>
+            </tr>
+
+            {{#each Institute_ }}
+            <tr>
+                <td valign="left"><img src="/css/images/institute.png"
+                        style=" height: 20px; width:20px; border-radius: 0% ; background-color:white" />
+                    {{this.Institute }}</td>
+                <td>{{this.To }}</td>
+                <td>{{this.From }}</td>
+                <input type="hidden" id="CurrInstID" name="CurrInstID" value="{{this._id }}">
+               
+
+            </tr>
+            {{/each }}
+
+
+
+        </table>
+
+
+    </div>
+    <div class=" Row4">
+
+
+        <table id="SPrjects" cellspacing="0" cellpadding="0">
+            <tr style="color:darkmagenta ">
+
+
+                <th> Semester Projects&nbsp;&nbsp;  </th>
+
+            </tr>
+            {{#each Project_  }}
+            <tr>
+                <td> <b> Title : </b> {{ this.Project}} <br>
+                    <b>Discription: </b> &nbsp;{{ this.Discription}}
+                </td>
+             
+            </tr>
+            {{/each }}
+
+        </table>
+
+
+    </div>
+    <div class=" Row4">
+
+
+         <div class=" Row4">
+
+
+                <table id="Accomplishments" cellspacing="0" cellpadding="0">
+                        <tr>
+                                <th style="padding:5px;    width: 5%;  ">&nbsp; &nbsp; &nbsp;</th>
+                                <th>Accomplishments &nbsp; &nbsp; &nbsp;
+                     
+                                 </th>
+                        </tr>
+                        <tr>
+                                <td style="padding:5px; padding-left:15px;    width: 5%; font-size: 60px; ">{{CourseCount_.count}}</dh>
+                                <td>Courses <a href="javascript:OpenAddCourse()"> </a> <br> 
+                                        <span style="color:gray"> 
+                                                {{#each Course_  }}  
+                                                <article style="   padding:5px; ; text-align:left;" >
+                                                {{this.Discription}} 
+
+                                                </article>
+                                                 {{/each }}
+                                                </span>
+
+
+                                </td>
+
+                        </tr>
+                        <tr>
+                                <td style="padding:15px;    width: 5%;  font-size: 60px; ">{{LanguageCount_.count}}</dh>
+                                <td>Languages
+                                <a href="javascript:OpenAddLanguage()"></a>         
+                                 <br>
+                                        <span style="color:gray"> 
+                                                {{#each Language_  }}    
+                                                <article style="   padding:5px; ; text-align:left;" >
+                                                {{this.Discription}} 
+                  
+
+                                                </article>
+                                           
+                                                 {{/each }}
+                                        </span>
+                                </td>
+
+                        </tr>
+                        <tr>
+                                <td style="padding:15px;    width: 5%;  font-size: 60px; ">{{CertificationCount_.count}}</dh>
+                                <td>Certifications 
+                                 <a > 
+                               
+                                 </a>           
+                                <br>
+                                         
+                                                {{#each Certification_  }}       
+                                            <span style="color:gray"> 
+{{this.Discription}}
+                                                   </span>
+                                                {{/each }}
+                                </td>
+
+                        </tr>
+                        <tr>
+                                <td style="padding:15px;    width: 5%;  font-size: 60px;">{{ExperienceCount_.count}}</dh>
+                                <td>Work Experience
+                                 <br>
+                                        <span style="color:gray ; text-align: left">
+                                                <br>
+                                                {{#each Experience_  }}       
+
+                                                <li style=" text-align: left"> {{this.Discription}} &nbsp;&nbsp;
+                                                {{/each }}
+
+                                        </span>
+                                </td>
+
+                        </tr>
+
+
+                </table>
+
+
+        </div>
+
+    </div>
+  <div class=" Row4">
+
+
+<table id="Accomplishments" cellspacing="0" cellpadding="0">
+                       
+                        
+ {{#each ReviewList_  }}   
+                          <tr>
+                               
+     
+                               <td> {{ this.ReviewDiscription}}<br> 
+                              
+                                  by  <a  href="/NucesCircle/GetProfile/{{this.ReviewbyEmail}}" style="color: black"  >
+                                         {{ this.ReviewByName}} 
+                                    </a>   
+                                       
+
+                                </td>
+
+                        </tr>
+                      
+{{/each }}             
+
+                </table>
+
+
+        </div>
+    </div>
+    <div id="AddReview" class="overlay">
+        <span class="closebtn" onclick="CloseGiveReview()" title="Close Overlay">×</span>
+        <div class="overlay-content">
+    <form id="newInstitue" action="/NucesCircle/addReview" method="POST" autocomplete="off">
+    
+        <div class="Newpost">
+            <div class="NewpostHeader">
+                Add&nbsp;&nbsp;Review
+                <br>
+            </div>
+            <div class="NewpostBody">
+                <p>
+                    Say Something Nice about your Friend /Collegue
+                </p>
+                <br>
+                <input type="hidden" id="Email" name="Email" value="{{CurrUser.Email}}">
+                <input type="hidden" id="id" name="id" value="{{CurrUser._id}}">
+                <input type="hidden" id="id" name="FName" value="{{CurrUser.FName}}">
+                <input type="hidden" id="id" name="LName" value="{{CurrUser.LName}}">
+                <input type="hidden" id="OtherEmail" name="OtherEmail" value="{{other.Email}}">
+                <input type="hidden" id="Otherid" name="Otherid" value="{{other._id}}">
+    
+                <br>
+    
+                             <textarea  rows="10" cols="30"
+                                            name="Review" required="required" 
+                                            style="   border: 2px solid rgb(139, 40, 115)   "> Write Review...
+                            </textarea>
+          <!---             <input type="text"  rows="4" cols="70" name="Review"
+                    style=" padding:1px; width:90% ; height:100px; border: 2px solid rgb(139, 40, 115)   " , required="required"/>
+    -->
+ 
+        <br><br> <hbr>
+    
+                <!--javascript:adjustSKill()-->
+                <input type="submit" value="Add Review "/>
+                   
+                <hr>
+    
+            </div>
+        </div>
+    
+    </form>
+                </div>
+        </div>
+
+  
+<script src="/js/OthersProfile.js"></script>
+</body>
+
+</html>

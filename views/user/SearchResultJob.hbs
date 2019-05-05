@@ -1,0 +1,176 @@
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Nuces-Circle</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/SearchResultJob.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+   
+</head>
+
+<body  >
+
+       <div class="header">
+                <!-- action="SearchResultPeople.html"  method="post" -->
+    <form action="SearchResultPeople.html" method="post">
+                        <a href="/NucesCircle" class="logo">Nuces-Circle</a>
+        <input type='text' placeholder='Search...' id='search-text-input' />
+
+        <div id='button-holder'>
+
+               <a style=" padding:2px;   padding-top:10px; COLOR: BLACK" > SEARCH</a>>
+        </div>
+
+                        <div id="myDropdown" class="dropdown-content2">
+
+
+                                <li> <a href="#about"> <img src="/css/images/portfolio.png"
+                                                        style="width:16px; height:16px ; border-radius: 0%"
+                                                        title="White flower" alt="Flower" align: left> &nbsp; Jobs
+                                        </a> </li>
+                                <li> <a href="#about"> <img src="/css/images/people.png"
+                                                        style="width:16px; height:16px ; border-radius: 0%"
+                                                        title="White flower" alt="Flower" align: left> &nbsp; People
+                                        </a> </li>
+                        </div>
+
+                     
+
+
+                </form>             
+
+
+                
+
+
+       
+
+
+        <div class="header-right">
+                <a href="/NucesCircle">
+                        <img src="/css/images/home.png" style="width:35px; height:35px ; border-radius: 0%"
+                                title="White flower" alt="Flower" /><br>
+                        Home</a>
+
+                <a href="/NucesCircle/connection" class="active" >
+                        <img src="/css/images/meeting.png" style="width:35px; height:35px ; border-radius: 30%"
+                                title="White flower" alt="Connection"><br>
+                        Network</a>
+                <a href="/NucesCircle/job">
+                        <img src="/css/images/job.png" style="width:35px; height:35px  ; border-radius: 30%"
+                                title="White flower" alt="Flower"><br>
+
+                        Job</a>
+                <a href="/NucesCircle/profile" >
+                        <img src="{{CurrUser.imagepath}}"
+                                style="width:35px; height:35px ; border-radius: 50% ; border:1px solid rgb(207, 205, 205)"
+                                title="White flower" alt="Flower"><br>
+                        Me</a>
+              <div class="dropdown">
+                                  <a  style="  font-size: 15px; padding:4px;
+      font-weight: 75px;" href="/NucesCircle/logout">Log Out</a>
+
+                   
+                </div>
+                <a> &nbsp; </a>
+
+        </div>
+        </div>
+
+    <div style="padding-left:20px">
+<br>
+        <h3>{{viewTitle}} </h3>
+       
+    </div>
+  <div class="Row4" style=" background-color: white ; " >
+
+<table id="Accomplishments" cellspacing="0" cellpadding="0">
+
+    {{#each Jobs  }}
+
+    <tr>
+        <td>
+            <a style=" color: black ; "> <img src="/css/images/salary.png" width="27" height="27"
+                    style="  border-radius: 5px;" align="left" /> &nbsp;{{this.Title}}
+            </a> <br>
+                    
+                    <b style="color : gray; padding:15px;"> {{this.Location}}  </b> <br>
+
+        </td>
+
+        <td >
+
+            <br>
+            <span style="color:gray ">
+                
+                <article style="  padding:5px; ; text-align:left;">
+
+
+                    </a>
+
+                    <b style="color : rgb(139, 40, 115) "> Last Date to Apply: </b> {{this.Date}} <br>
+                    <b style="color : rgb(139, 40, 115) "> Salary Range: </b> {{this.Salary}} <br>
+                    <b style="color : rgb(139, 40, 115) "> Requirements: </b> {{this.Requirements}} <br>
+                    <b style="color : rgb(139, 40, 115) "> Job Type: </b> {{this.Type}} <br>
+                    <b style="color : rgb(139, 40, 115) "> For Further Information Email us on : </b> {{this.Email}}
+                     <br> <br>
+                  <form action="/NucesCircle/ApplyJob/{{this._id}}" method="POST" autocomplete="off">
+                <input type="hidden" value="{{CurrUser.Email}}"  name="CurrUserEmail">
+                <input type="hidden" value="{{this.Email}}"  name="RecuriterEmail">
+
+                    <button type="submit"   style="background-color : rgb(139, 40, 115) ;width:30% ">NUCES-Circle&nbsp;Easy&nbsp;Apply</button>
+                  </form>
+                    <br>
+
+                </article>
+
+            </span>
+        </td>
+
+    </tr>
+    {{/each }}
+
+
+</table>
+
+ </div>
+ <div id="myOverlay" class="overlay">
+        <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+        <div class="overlay-content">
+
+                <img src="/css/images/icon.png" style="width:36px; height:36px ; border-radius: 0%" title="Circle" alt="Flower"
+                     >
+                <h2 style="color : white">
+
+                    NUCES-Circle Easy Apply </h2>
+                <br> <br>
+                <div >
+                    <input type="text" placeholder="Email Address" name="Email" style=" width:100% ;   " required="required">
+                    <hr><br> <br>
+                    <p> *The job poster will get an email with your contact info and a link to your profile. </p>
+
+                    <br> <br>
+
+     
+     
+             <button type="submit" style="width:150px ;   background-color : rgb(88, 22, 72); ">Send Application </button>
+               
+                  </div>
+
+            </form>
+        </div>
+</div>
+<script>
+      function openSearch() {
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function closeSearch() {
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+</script>
+</body>
+

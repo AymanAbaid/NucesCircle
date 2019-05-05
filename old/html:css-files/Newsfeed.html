@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Nuces-Circle</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="Newsfeed.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+<br>
+    <div class="header">
+        <a href="Newsfeed.html" class="logo">Nuces-Circle</a>
+        <input type='text' placeholder='Search...' id='search-text-input' onclick="myFunction()" />
+        <div id="myDropdown" class="dropdown-content2">
+
+
+            <li> <a href="#about"> <img src="portfolio.png" style="width:16px; height:16px ; border-radius: 0%"
+                        title="White flower" alt="Flower" align: left> &nbsp; Jobs
+                </a> </li>
+            <li> <a href="#about"> <img src="people.png" style="width:16px; height:16px ; border-radius: 0%"
+                        title="White flower" alt="Flower" align: left> &nbsp; People
+                </a> </li>
+        </div>
+
+
+        <div id='button-holder'>
+           
+                <input type="submit" value="Search" name="submit" id="srchbtn"  onclick="getosearch()"
+                style="  background-color: Transparent; background-repeat:no-repeat; border: none;cursor:pointer;overflow: hidden;
+                outline:none; text-align: center ;  ">
+        </div>
+        <div class="header-right">
+            <a href="Newsfeed.html" class="active">
+                <img src="home.png" style="width:35px; height:35px ; border-radius: 0%" title="White flower"
+                    alt="Flower" /><br>
+                Home</a>
+
+            <a href="Connection.html">
+                <img src="meeting.png" style="width:35px; height:35px ; border-radius: 30%" title="White flower"
+                    alt="Connection"><br>
+                Network</a>
+            <a href="Jobs.html">
+                <img src="job.png" style="width:35px; height:35px  ; border-radius: 30%" title="White flower"
+                    alt="Flower"><br>
+
+                Job</a>
+            <a href="Profile.html">
+                <img src="Woman.png"
+                    style="width:35px; height:35px ; border-radius: 50% ; border:1px solid rgb(207, 205, 205)"
+                    title="White flower" alt="Flower"><br>
+                Me</a>
+            <div class="dropdown">
+                <button class="dropbtn"> &nbsp; &nbsp;
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="Signin.html">Log Out</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Edit Profile</a>
+                </div>
+            </div>
+            <a> &nbsp; </a>
+
+        </div>
+    </div>
+    <br>
+    <div
+        style="  background-color: white ; color: black; font-size: 13px; margin: auto; width: 45%; border: 1px solid rgb(182, 181, 181); padding: 20px 0px 20px 0px ; ">
+
+        <div style="  width:100% ;border: 1px solid gray; padding: 10px 10px 30px 10px ;   " id = "post">
+            <p> <img src="edit.png" alt=" write-post" width="22" height="22"
+                    style=" padding-left: 0px; border-radius: 0%; ">
+                <a href="" style="color : black ; text-decoration: none; ">
+                    Write a post</a>
+            </p>
+            
+
+        </div>
+    
+
+
+    </div>
+    <br>
+    <hr>   
+
+   
+    <br>
+    <div class="post">
+        <div class="post-header">
+            <p> <img src="woman.png" alt="profile picture" width="42" height="42" align="left">
+            </p>
+            <em>
+                <a href="Profile.html" style="color : black  ; text-decoration: none; padding-bottom: 50px">Harmoine
+                    Granger </a></li>
+                <em style="color : gray ">
+                    <br> Wizard At Hogwarts
+                </em>
+
+            </em>
+
+
+        </div>
+        <div class="post-body  " style="   margin-bottom: 10px;
+        ">
+            <br>
+            <p style="  padding:  5px; 
+            text-align: left;">
+                What really set Bill apart in my mind and the minds of many of
+                my colleagues is how smart Bill was in so many areas. He could
+                dig deep into the deepest depths of the most difficult and
+                arcane technical areas, where only a handful of others
+                in the company had the same depth and that was their
+                articular area of specialty. He knew the product details,
+                inside and out. He knew the marketing plan as well as anyone
+            </p>
+        </div>
+        <div class="post-footer">
+
+
+        </div>
+    </div>
+    
+    <br>
+ 
+    <div class="post2" style="margin-top: 10px; text-align: center;
+    ">
+        <div class="post-header2">
+            <p> <img src="detective.png" alt="profile picture" width="42" height="42" align="left">
+            </p>
+            <em>
+                <a href="Profile.html" style="color : black  ; text-decoration: none; padding-bottom: 50px">Sherlock
+                    Holmes </a></li>
+                <em style="color : gray ">
+                    <br> Consultant Detective
+                </em>
+
+            </em>
+
+
+        </div>
+        <br>
+        <div class="post-body2">
+         
+            <p style="  padding:  5px; 
+            text-align: left;">
+                What really set Bill apart in my mind and the minds of many of
+                my colleagues is how smart Bill was in so many areas. He could
+                dig deep into the deepest depths of the most difficult and
+                arcane technical areas, where only a handful of others
+                in the company had the same depth and that was their
+                articular area of specialty. He knew the product details,
+                inside and out. He knew the marketing plan as well as anyone
+            </p>
+        </div>
+        <div class="post-footer2">
+
+
+        </div>
+    </div>
+
+    <div id="output"></div>
+
+
+    <script type="text/javascript">
+
+function setCookie(cname, cvalue, exdays) {
+                        var d = new Date();
+                        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                        var expires = "expires=" + d.toGMTString();
+                        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                }
+function getosearch() {
+            var inputItem = "";
+            inputItem = document.getElementById("search-text-input").value;
+            if(inputItem != "")
+            {
+                setCookie("search", inputItem, 1);
+               // user=getCookie("ToSearch");
+          //  location = document.getElementById("location").value; ]
+               window.location.href = "SearchResultPeople.html";
+            }
+            else{
+
+                alert("Serach Field Empty");
+            }
+
+        }
+        function myFunction() {
+
+            if (document.getElementById("myDropdown").style.display == "block") {
+                document.getElementById("myDropdown").style.display = "none";
+            }
+            else
+                document.getElementById("myDropdown").style.display = "block";
+
+        }
+
+        window.onscroll = yHandler;
+
+        function yHandler() {
+
+            var wrap = document.getElementById('output');
+            var contentHeight = wrap.offsetHeight;
+            var yOffset = window.pageYOffset;
+            var y = yOffset + window.innerHeight;
+            if (y >= contentHeight) {
+                // wrap.innerHTML += "Records"+"<br>";
+                var divElement = document.createElement("Div");
+                divElement.id = "divID";
+
+                // Styling it
+                divElement.style.backgroundColor = "white";
+                divElement.style.color = "black";
+                divElement.style.fontSize = "13px";
+                divElement.style.margin = "auto";
+                divElement.style.width = "45%";
+                divElement.style.paddingTop = "20px";
+                divElement.style.paddingRight = "10px";
+                divElement.style.paddingBottom = "5px";
+                divElement.style.paddingLeft = "20px";
+                divElement.style.marginBottom = "5px;"
+                divElement.style.marginTop = "15px";
+                //adding header to output div
+                var divHeader = document.createElement("Div");
+                divHeader.id = "divIDHeader";
+                //styling div header
+                divHeader.style.paddingLeft = "20px";
+                divHeader.style.paddingBottom = "0px";
+                divHeader.style.color = "gray";
+                divHeader.style.backgroundColor = "white";
+                divHeader.style.textAlign = "left";
+                divHeader.style.lineHeight = "1.6";
+                // adding picture in div-header using paragraph
+                var paragraph1 = document.createElement("P");
+                var text1 = document.createTextNode("");
+                paragraph1.appendChild(text1);
+
+                ///adding image
+                var img = document.createElement("img");
+                img.src = "harrypotter.png";
+                //styling image
+                //img.setAttribute("src", "img_pulpit.jpg");
+                img.setAttribute("width", "42");
+                img.setAttribute("height", "42");
+                img.setAttribute("alt", "Profile Pic");
+                img.setAttribute("align", "left");
+
+                //img.setAttribute("padding-bottom", "20px");
+
+                ///adding picture in paragraph-div header
+                paragraph1.appendChild(img);
+                divHeader.appendChild(paragraph1);
+                ////adding em tag for name
+                var em1 = document.createElement("EM");
+                var t = document.createTextNode(" ");
+                ////adding  em1 tag to output header
+                divHeader.appendChild(em1);
+                em1.appendChild(t);
+                ///creating anchor tag tinto em1 tag for name
+                var name = document.createElement("A");
+                name.setAttribute("href", "Profile.html");
+                //name.setAttribute("text-decoration", "none");
+                name.style.textDecoration = "none";
+                name.style.color = "black"
+                name.setAttribute("padding-bottom", "50px");
+                var aname = document.createTextNode("Harry Potter");
+                name.appendChild(aname);
+                em1.appendChild(name);
+                ///adding proffesion in another am tag
+                var em2 = document.createElement("EM");
+                var t2 = document.createTextNode("Auror at Ministery of Magic");
+                //styling em2
+                em2.style.color = "Gray";
+                em2.appendChild(t2);
+                em1.appendChild(em2);
+                //// adding line break
+                var break1 = document.createElement("BR");
+                em1.insertBefore(break1, em2);
+
+
+                // Adding a paragraph to it
+                var paragraph = document.createElement("P");
+                var text = document.createTextNode(" What really set Bill apart in my mind and the minds of many of my colleagues is how smart Bill was in so many areas. He coulddig deep into the deepest depths of the most difficult andarcane technical areas, where only a handful of others in the company had the same depth and that was their articular area of specialty. He knew the product details,inside and out. He knew the marketing plan as well as anyone ");
+                paragraph.style.padding = "5px";
+                paragraph.style.padding = "5px";
+                paragraph.style.textAlign = "Left";
+
+                divElement.appendChild(divHeader); /// adding div header to output div
+
+                paragraph.appendChild(text);
+                divElement.appendChild(paragraph);
+                document.getElementsByTagName("body")[0].appendChild(divElement);
+
+
+
+            }
+
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+    <link rel="stylesheet" type="text/css" href="/css/Signup.css">
+
+<body>
+  <div class="header">
+                <!-- action="SearchResultPeople.html"  method="post" -->
+                        <a href="/NucesCircle" class="logo">Nuces-Circle</a>
+    </div>
+	<header>
+		<h1></h1>
+    </header>
+
+  
+
+
+    <div class="main-content">
+
+        <!-- You only need this form and the form-register.css -->
+
+        <form class="form-register" 
+               action="/NucesCircle" method="POST" autocomplete="off">
+
+
+            <div class="form-register-with-email">
+
+                <div class="form-white-background">
+
+                    <div class="form-title-row" >
+                        <h1>Create an account</h1>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>First Name</span>
+                            <input type="text"  name="FName" required="required" placeholder="First Name" value="{{user_.FName}}" >
+                            <div class="text-danger">
+                              {{user_.FNameError}}</div>
+             
+                        </label>
+                    </div>
+                    <div class="form-row">
+                            <label>
+                                <span>Last Name</span>
+                                <input type="text"  name="LName" required="required" placeholder="Last Name" value="{{user_.LName}}" >
+                                <div class="text-danger">
+                                  {{user_.FNameError}}</div>
+                 
+                            </label>
+                        </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>Email</span>
+                            <input type="email" name="Email" required="required" maxlength="28" >
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>Password</span>
+                            <input type="password" name="Password" required="required"  minlength="6"  >
+                        </label>
+                    </div>
+
+                <a href="/NucesCircle/signin" class="form-log-in-with-existing">Already have an account? Login here &rarr;</a>
+
+     <div class="text-danger">
+           <br> {{EmailError}}
+            <br> {{user_.EmailError}}
+           </div>
+   
+                    <div class="form-row" style="margin-top:-20px;">
+                        <button type="submit">Register</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="form-sign-in-with-social">
+
+                <div class="form-row form-title-row">
+                    <span class="form-title">Sign in with</span>
+                </div>
+
+        </form>
+        <!-------    oauth/facebook       ----->
+
+        <a href="/NucesCircle/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
+<a href="/NucesCircle/oauth/google">Login with Google</a>
+<br><br>
+  <a href="https://github.com/login/oauth/authorize?client_id=myclientid123&redirect_uri=http://localhost:8080/oauth/redirect">
+    Login with github
+  </a>
+<br><br>
+
+ <form class="form-register" 
+               action="/NucesCircle/auth/linkedin/callback" method="GET" autocomplete="off">
+
+  <!----              <input type="submit"  class="form-facebook-button" value="Facebook" >
+		----->
+
+            </div>
+
+        </form>
+
+    </div>
+    <script src="/js/signup.js"></script>
+
+</body>
+
+</html>

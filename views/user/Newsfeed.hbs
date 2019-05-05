@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> {{viewtitle}} </title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/Newsfeed.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+    <br>
+   
+      <div class="header">
+                <!-- action="SearchResultPeople.html"  method="post" -->
+        <form action="SearchResultPeople.html" method="post">
+                        <a href="/NucesCircle" class="logo">Nuces-Circle</a>
+       <!--  <input type='text' placeholder='Search...' id='search-text-input' /> t"
+
+        <div id='button-holder'>
+
+               <a style=" padding:2px;   padding-top:10px; COLOR: BLACK" > SEARCH</a>>
+        </div> -->
+
+                 
+
+         </form>
+
+
+       
+
+
+        <div class="header-right">
+                      <a href="/NucesCircle/Notification" class="notification" >
+                        <span class="badge">{{NotificationCount_.count}}</span>
+                        <img src="/css/images/people.png" style="width:35px; height:35px ; border-radius: 0%"
+                                title="White flower" alt="notifications" /><br>
+                        Notifications</a>
+
+                <a href="/NucesCircle" class="active" >
+                        <img src="/css/images/home.png" style="width:35px; height:35px ; border-radius: 0%"
+                                title="White flower" alt="Flower" /><br>
+                        Home</a>
+
+                <a href="/NucesCircle/connection" >
+                        <img src="/css/images/meeting.png" style="width:35px; height:35px ; border-radius: 30%"
+                                title="White flower" alt="Connection"><br>
+                        Network</a>
+                <a href="/NucesCircle/job">
+                        <img src="/css/images/job.png" style="width:35px; height:35px  ; border-radius: 30%"
+                                title="White flower" alt="Flower"><br>
+
+                        Job</a>
+                <a href="/NucesCircle/profile"  >
+                        <img src="{{CurrUser.imagepath}}"
+                                style="width:35px; height:35px ; border-radius: 50% ; border:1px solid rgb(207, 205, 205)"
+                                title="White flower" alt="Flower"><br>
+                        {{CurrUser.FName}}</a>
+                 <div class="dropdown">
+                         
+                <a href="/NucesCircle/logout" style=" padding:15px ;padding-left:15px;">Log Out</a>
+
+                   
+            </div>
+
+        </div>
+       </div>
+   
+    <hr>
+
+             <!--action="/NucesCircle/post" method="POST"  autocomplete="off" ---->
+            <form id="create-post" >             
+               
+                <div  class="Newpost">
+                <div class="NewpostHeader">
+                    Write a Post 
+                    <br>
+                </div>
+                    <input type="text" id="postBody" placeholder="  What is on your Mind?" name="Message" style=" padding:0px; width:100% ; height:100px;  " >
+                    <input type="hidden" id="CreaterEmail" name="CreaterEmail" value="{{CurrUser.Email}}">
+                    <input type="hidden" id="FullName" name="FullName" value="{{CurrUser.FName}}&nbsp;{{CurrUser.LName}}">
+                    <input type="hidden" id="ProfilePic" name="ProfilePic" value="{{CurrUser.imagepath}}">
+
+                    <hr> <br>
+
+                    <br> <br><br> <br>
+                    <button id="post" type="submit" style="width:150px ;color: white ;background-color: rgb(139, 40, 115) ;"   >Post</button>
+
+              <br> <br>
+                </div>
+
+            </form>
+             <br>
+ <!---
+   <div
+        style="  background-color: white ; color: black; font-size: 13px; margin: auto; width: 45%; border: 1px solid rgb(182, 181, 181); padding: 20px 0px 20px 0px ; ">
+
+        <div style="  width:100% ;border: 1px solid gray; padding: 10px 10px 30px 10px ;   " id="post">
+            <p> <img src="/css/images/edit.png" alt=" write-post" width="22" height="22"
+                    style=" padding-left: 0px; border-radius: 0%; ">
+                <a href="javascript:onclick=openSearch()" style="color : black ; text-decoration: none; ">
+                    Write a post</a>
+            </p>
+
+
+        </div>
+--->
+
+
+ </div>
+<div id="Row4" class="Row4"> 
+
+    
+<!----  
+<p id="loading">
+            <img src="/css/images/loading.png" alt="Loading…" />
+            
+</p>--->
+<div>
+
+
+
+    <!----
+
+ {{# each items }}
+ <article>
+    <div class="post2" style="margin-top: 10px; text-align: center;
+    ">
+        <div class="post-header2">
+            <p> <img src="{{this.ProfilePic}}" alt="profile picture" width="42" height="42" align="left">
+            </p>
+            <em>
+                <a style="color : black  ; text-decoration: none; padding-bottom: 50px">
+                   &nbsp; {{this.FullName}} </a></li>
+                <em style="color : gray ">
+                    <br>  &nbsp;{{this.Time}}
+                </em>
+
+            </em>
+
+
+        </div>
+        <br>
+        <div class="post-body2">
+
+            <p style="  padding:  5px; 
+            text-align: left;">
+               {{this.Message}}
+            </p>
+        </div>
+        <div class="post-footer2">
+
+
+        </div>
+    </div>
+ </article>
+{{/each }}
+
+
+
+---------------
+
+
+<div class=" Row4">
+{{#each items }}
+
+<table id="Education">
+  <tr>
+     
+
+   <th>
+ <a href="/NucesCircle/DeletePost/{{this._id}}/{{this.CreaterEmail}}" >DELETE</a> &nbsp;
+<a href="#" >EDIT</a>
+   </th>
+  </tr>
+
+
+  <tr>
+   
+    <td> 
+        <p> <img src="{{this.ProfilePic}}" alt="profile picture" width="52" height="52" align="left">
+        </p>
+            <em>
+                <a style="color : black  ; text-decoration: none; padding-bottom: 50px ">
+                   &nbsp; {{this.FullName}} </a>
+                <em style="color : rgb(128, 128, 128) ">
+                    <br>  &nbsp;{{this.Time}}
+                </em>
+
+            </em>
+            
+            
+    <div class="post-body2">
+
+            <p style="  padding:  10px; 
+            text-align: left;">
+               {{this.Message}}
+            </p>
+        </div>
+    
+    
+   
+   
+   
+    </td>
+  </tr>
+  
+<tr>
+    
+</tr>
+
+</table>
+<br>
+
+{{/each }}
+</div>
+ -->
+ <div id="myOverlay" class="overlay">
+        <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+        <div class="overlay-content">
+             <!--action="/NucesCircle/post" method="POST"  autocomplete="off" ---->
+            <form id="create-post" >             
+               
+                <div  class="Newpost">
+                <div class="NewpostHeader">
+                    Edit a Post 
+                    <br>
+                </div>
+
+                    <input type="text" id="postBody" placeholder="  What is on your Mind?" name="Message" style=" padding:0px; width:100% ; height:100px; " >
+                    <input type="hidden" id="CreaterEmail" name="CreaterEmail" value="{{CurrUser.Email}}">
+                    <input type="hidden" id="FullName" name="FullName" value="{{CurrUser.FName}}&nbsp;{{CurrUser.LName}}">
+                    <input type="hidden" id="ProfilePic" name="ProfilePic" value="{{CurrUser.imagepath}}">
+
+                    <hr> <br>
+
+                    <br> <br><br> <br>
+                    <button id="post" type="submit" style="width:150px " onclick="closeSearch()" >Post</button>
+                </div>
+
+            </form>
+        </div>
+ </div>
+  <script>
+      function myFunction() {
+
+    if (document.getElementById("myDropdown").style.display == "block") {
+        document.getElementById("myDropdown").style.display = "none";
+    }
+    else
+        document.getElementById("myDropdown").style.display = "block";
+
+}
+
+function openSearch() {
+    document.getElementById("myOverlay").style.display = "block";
+}
+function closeSearch() {
+    document.getElementById("myOverlay").style.display = "none";
+}
+  </script>
+<script src="/js/jQuery.js"></script>
+<script src="/js/Newsfeed.js"></script>
+
+</body>
+
+</html>
