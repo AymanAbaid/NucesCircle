@@ -776,58 +776,7 @@ router.post('/searchconnection', function (req, res) {
                                                 //Friends [] contain Profile of all Friends Of Owner
                                                 console.log("Friends", Friends);
                                                 console.log("Strangers ", Strangers);
-       /*
-                                                ResultFriendsbyName = [];
-                                                for (i = 0; i < ResultPeople.length; i++) {
-                                                    for (j = 0; j < Friends.length; j++) {
-                                                        if (ResultPeople[i].Email == Friends[j]) {
-
-                                                            ResultFriendsbyName.push(Friends[j]);
-                                                        }
-                                                    }
-
-                                                }
-                                                // ResultFriendsbyName have email of all friends of user 
-                                                console.log("ResultFriendsbyName", ResultFriendsbyName);
-
-                                                var strangers = [];
-                                                var UsersFriends = [];
-                                                for (i = 0; i < ResultPeople.length; i++) {
-                                                    if (ResultFriendsbyName.length > 0) {
-                                                        for (j = 0; j < ResultFriendsbyName.length; j++) {
-                                                            console.log("ResultPeople[i].Email", ResultPeople[i].Email,"   ResultFriendsbyName",ResultFriendsbyName[j]);
-
-                                                            if (ResultPeople[i].Email == ResultFriendsbyName[j]) {
-                                                                UsersFriends.push(ResultPeople[i]);
-                                                               // ResultPeople[i].delete; 
-                                                                break;
-                                                            }
-                                                            else {
-                                                                strangers.push(ResultPeople[i]);
-                                                                break;
-
-                                                            }
-
-
-                                                        }
-
-
-                                                    }
-                                                    else {
-                                                        strangers = ResultPeople;
-                                                    }
-
-
-
-
-                                                }
-
-                                                console.log("strangers", strangers);
-                                                console.log("Friends", UsersFriends);
-                                                if(ownerEmail==user.Email)
-                                                {
-
-                                                } */
+    
 
                                                 res.render("user/SearchResultPeople.hbs", {
                                                     //sends curr user profile and all the profiles of the searched user
