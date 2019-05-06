@@ -59,7 +59,7 @@ ConnectSchema.statics.GetFriends = function (ToFindEmail, callback) {
                             //Friends1.push(Friends2[i].OwnerEmail);
                         }*/
                         
-                        console.log("Friendss ", AllFriends  );
+                  //      console.log("Friendss ", AllFriends  );
                          return callback(null, AllFriends);
                     } 
                    

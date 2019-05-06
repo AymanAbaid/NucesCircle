@@ -27,19 +27,70 @@
 
 
   </div>
-    <div class="mainHeading" style=" height: 220px;" >
+    <div class="mainHeading" style=" height: 20%;" >
 
    <p>
+     <!---
      <form action="/NucesCircle/api/user" method="DELETE" autocomplete="off">
-     
+    ----> 
     TO DELETE USER INFORMATION FILL below Field with user id  <br><br>
     <input type="text" id="DeleteID" name="ID" placeholder='User Record '  ><br>
-   <br> 
- <input type="submit" value="Request API for all Users" style="width:50%; 
-       height:35px;" onclick="SendID();"  id="Delete"  ></input>
+    <button type="button" id="Delete" >Delete </button>
+<!---- 
+ <input type="submit"  id="Delete"  value="Request API for all Users" style="width:50%; 
+       height:35px;"    ></input>
+onclick="SendID();"
   </form>
+--->
 </p>
-     </div>
+    </div>
+<br> 
+   <div class="mainHeading" style=" height: 20%" >
+
+   <p>
+     <!---
+     <form action="/NucesCircle/api/user" method="DELETE" autocomplete="off">
+    ----> 
+    TO EDIT USER INFORMATION FILL below Field with user id:
+    Reminder You can only change user FName and LName
+      <br><br>
+    <input type="text" id="EditID"  placeholder='User ID '  > &nbsp;  &nbsp;
+    <input type="text" id="EditFName" name="ID" placeholder=' First Name  '  ><br>
+    <input type="text" id="EditLName" name="ID" placeholder='Last Name   '  ><br>
+
+    <button type="button" id="Edit" >Edit </button>
+<!---- 
+ <input type="submit"  id="Delete"  value="Request API for all Users" style="width:50%; 
+       height:35px;"    ></input>
+onclick="SendID();"
+  </form>
+--->
+</p>
+   </div>
+   <br>
+     <div class="mainHeading" style=" height: 30%" >
+
+   <p>
+     
+     <form  autocomplete="off">
+   
+    TO Create New User  FILL below Fields :
+      <br><br>
+    <input type="text" id="CreateFName" placeholder='First Name  ' required="required" ><br>
+    <input type="text" id="CreateLName"  placeholder='Last Name   '  ><br>
+    <input type="email" id="CreateEmail"  placeholder="Email" required="required" maxlength="28" >
+<br>
+    <input type="password" id="Password"  placeholder='Password   '  ><br>
+
+    <button type="button" id="Create" >Create </button>
+<!---- 
+ <input type="submit"  id="Delete"  value="Request API for all Users" style="width:50%; 
+       height:35px;"    ></input>
+onclick="SendID();"-->
+  </form>
+
+</p>
+   </div>
 
 
 

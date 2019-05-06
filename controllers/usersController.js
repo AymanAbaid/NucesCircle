@@ -22,9 +22,11 @@ const nodemailer = require('nodemailer');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library'); */
 var FacebookStrategy = require('passport-facebook').Strategy;
-
+var fbuser_=[];
 var passport = require('passport')
 var configAuth = require('./auth');
+router.use(passport.initialize());
+//router.use(passport.session());
 
 passport.use(new FacebookStrategy({
     clientID: configAuth.facebookAuth.clientID,
@@ -42,15 +44,54 @@ passport.use(new FacebookStrategy({
                     return done(err);
                 if(user_)
                     {     console.log(" alreday resgistered");
-                    //return done(err, user_);
+                  // // res.redirect('/NucesCircle/profile');
+                   //router.use(passport.initialize());
+                   fbuser_.push(user_)
+                    return done(null, user_);
                     }
                     else{
                         console.log(profile);
-                        console.log(" sucessfull");
+                       // console.log(" sucessfull");
                         fname=  profile.displayName.split(" ");
-                        insertFacebookRecord(fname[0], fname[1],profile.id,accessToken );
+                       // insertFacebookRecord(fname[0], fname[1],profile.id,accessToken );
+                        email=fname[0]+fname[1]+"@y7mail.com";            
+                        var NewUser = new user(); //user_
+                        NewUser.FName = fname[0];
+                        NewUser.LName = fname[1];
+                        NewUser.Id = profile.id;
+                        NewUser.Token = profile.id;
+                        NewUser.Email = fname[0]+fname[1]+"@y7mail.com";
+                        NewUser.Password = "/";
+                    
+                       // user_.id = id;
+                       // user_.token = token;
+                       NewUser.save((err, doc) => {
+                    
+                            if (!err) {
+                                console.log(" No error", NewUser);
+                         
+                                fbUserCreateProfile(fname[0], fname[1]  ,email);
+                                fbUserCreateInstitueRecord( email);
+                                for(i=0 ; i<fbuser_.length ; i++)
+                                fbuser_.pop();
 
-                        return done(null,user_);
+                                fbuser_.push(NewUser)
+                                return done(null, NewUser);
+                    
+                            
+                    
+                            }
+                            else {
+                              
+                                 console.log('Error during fb User record insertion : ' + err);
+                    
+                            }
+                        });
+                            
+                        
+
+
+                       // return done(null,user_);
                     }
                 
             });
@@ -59,7 +100,16 @@ passport.use(new FacebookStrategy({
         });
 }
 ));
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
 
+// used to deserialize the user
+passport.deserializeUser(function(id, done) {
+    user.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
 router.get('/auth/facebook', passport.authenticate('facebook'));
 
 // Facebook will redirect the user to this URL after approval.  Finish the
@@ -67,8 +117,8 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
 // access was granted, the user will be logged in.  Otherwise,
 // authentication has failed.
 router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/NucesCircle/fbsignin',
-                                      failureRedirect: '/NucesCircle/fbsignin' }))
+  passport.authenticate('facebook', { successRedirect:  '/NucesCircle/fbsignin',
+                                      failureRedirect: '/NucesCircle' }))
 
 
 
@@ -93,7 +143,7 @@ function insertFacebookRecord(FName_,LName_,id,token, res ) {
             fbUserCreateInstitueRecord( email);
            
 
-            //res.redirect("/NucesCircle/fbsignin");
+          //  res.redirect("/NucesCircle/fbsignin");
 
             //CreateProfile(req, res);
             //CreateInstitueRecord(req, res);
@@ -101,9 +151,8 @@ function insertFacebookRecord(FName_,LName_,id,token, res ) {
 
         }
         else {
-           console.log("sucessfull");
-           // else
-               // console.log('Error during record insertion : ' + err);
+          
+             console.log('Error during fb User record insertion : ' + err);
 
         }
     });
@@ -159,15 +208,15 @@ function fbUserCreateInstitueRecord(Email) {
     });
 }
 
-router.get('/fbsignin', (Email, id, req, res) => {
+router.get('/fbsignin', ( req, res) => {
    // var id = req.body.email;
    // var id2 = req.body.password;
-    console.log('Email :' + id);      //  else
-    console.log('pwd :' + id2);      //  else
+   // console.log('Email :' + id);      //  else
+   // console.log('pwd :' + id2);      //  else
 
-    req.session.userId = id;
-    console.log('Sucessfully signed in');
-
+//    
+   console.log('/fbsign in ', fbuser_[0]._id);
+    req.session.userId = fbuser_[0]._id;
    
   
     return res.redirect('/NucesCircle/profile');
@@ -568,7 +617,7 @@ router.get('/connection', function (req, res, next) {
 });
 
 router.get('/profile', function (req, res, next) {
-
+console.log(req.session.userId );
     user.findById(req.session.userId)
         .exec(function (error, user_) {
             if (error) {
@@ -740,7 +789,7 @@ router.post('/searchconnection', function (req, res) {
     // console.log(' Search connection  : ' + req.body.Email + req.body.id + req.body.SearchField);
     var ownerEmail = req.body.Email;
     var str = req.body.SearchField;
-    str = str.toProperCase();
+  
 
     user.findById(req.session.userId)
         .exec(function (error, user_) {
@@ -769,13 +818,13 @@ router.post('/searchconnection', function (req, res) {
                                 else {
                                     console.log("Search string ", str );
 
-                                    Profile.SearchManyPeople(ownerEmail, user.Email, str, AllFriends,
+                                    Profile.SearchManyPeople(ownerEmail, str, AllFriends,
                                         function (error, Friends , Strangers, next) {
                                             if (error || !Friends||!Strangers ) console.log('no people found.');
                                             else {
                                                 //Friends [] contain Profile of all Friends Of Owner
-                                                console.log("Friends", Friends);
-                                                console.log("Strangers ", Strangers);
+                                                //console.log("Friends", Friends);
+                                                //console.log("Strangers-- ", Strangers);
     
 
                                                 res.render("user/SearchResultPeople.hbs", {
@@ -2285,7 +2334,7 @@ router.get('/api/user', (req, res, next)=> {
 
 
 router.post('/api/user', (req, res, next)=> {
-
+console.log("New USer Creation ", req.body.Password);
    const NewUser= new user(
     {   _id: new mongoose.Types.ObjectId(),
         FName: req.body.FName,
@@ -2370,7 +2419,6 @@ router.get('/api/user/:userID', (req, res, next)=> {
 router.delete('/api/user/:userID', (req, res, next)=> {
 
    const id= req.params.userID;
-   console.log( " DELTEED ID ",id );
 
     user.remove({_id: id }).exec()
     .then( result=>{
@@ -2395,7 +2443,7 @@ router.delete('/api/user/:userID', (req, res, next)=> {
 
 
 
- });
+});
 
 
 router.patch('/api/user/:userID', (req, res, next)=> {
@@ -2428,6 +2476,40 @@ router.patch('/api/user/:userID', (req, res, next)=> {
 
 
 });
+router.post('/api/edituser/:userID', (req, res, next)=> {
+
+    const id= req.params.userID;
+    const fname= req.body.FName;
+    const lname= req.body.LName;
+    console.log( " Edit ID :",fname,lname );
+
+    
+    user.update(      
+        { _id:id },
+        { $set: { "FName":fname,  "LName": lname} }
+        )
+    .exec()
+    .then( result=>{
+        console.log(result);
+        res.status(201).json(
+           {
+               message:"User Updated ",
+               request:{
+                type:'GET',
+                discription: "Get Detail of this User",
+                url:' http://localhost:3000/NucesCircle/api/user/'+id
+           }
+
+           }
+        );
+       
+    }) 
+    .catch(err=>{ console.log(err)
+        res.status(500).json( {error:err});
+        });
+ 
+ 
+ });
 
 
 

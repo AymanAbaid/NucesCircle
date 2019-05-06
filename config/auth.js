@@ -1,5 +1,8 @@
 
 module.exports = {
+	    // used to serialize the user for the session
+
+
 	'facebookAuth' : {
 		'clientID': '2462132327171052',
 		'clientSecret': '740f27245a1665e26b2984c172d37979',
