@@ -8,13 +8,13 @@ const usersController = require('./controllers/usersController');
 var session = require('express-session');
 var multer  = require('multer');
 const port = process.env.PORT || 3000;
-
+/*
 const mongoose= require('mongoose');
 mongoose.connect('mongodb://localhost:27017/UsersDB', { useNewUrlParser: true }, (err) => {
     if (!err) { console.log('MongoDB Connection Succeeded.') }
     else { console.log('Error in DB connection : ' + err) }
 });
-
+*/
 //var upload = multer({ dest: 'public/uploads/' })
 //var MongoStore = require('connect-mongo')(session);
 
